@@ -11,9 +11,9 @@ input:invalid {
   border: 2px solid red;
 }
 
-input:invalid:required {
+/* input:invalid:required {
   background: yellow;
-}
+} */
 
 input:valid {
   border: 2px solid black
