@@ -3,18 +3,38 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.carousel-caption {
+  position: absolute;
+  padding: 50px;
+  background-color: rgba(0,0,0,0.4);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%
+}
+
+.masthead {
+  background-size: cover;
+  min-height:40vh;
+  position: relative;
+  color: white;
+}
+
+.color-overlay {
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%
 }
 
 input:invalid {
   border: 2px solid red;
 }
 
-/* input:invalid:required {
-  background: yellow;
-} */
-
 input:valid {
-  border: 2px solid black
+  border: 2px solid black;
 }

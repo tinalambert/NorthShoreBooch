@@ -9,7 +9,9 @@ const hbs = require("hbs");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const productRouter = require("./routes/products")
+const productRouter = require("./routes/products");
+const addProductRouter = require("./routes/addProduct");
+const volunteerRouter = require("./routes/volunteer")
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productRouter)
+app.use("/products/add", addProductRouter);
+app.use("/volunteer", volunteerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
