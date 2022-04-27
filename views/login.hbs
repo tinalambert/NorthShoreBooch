@@ -1,0 +1,32 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <title>Login Page</title>
+    <link href='./styleSheets/style.css' type='text/css' rel='stylesheet' />
+    <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
+  </head>
+
+  <body class="loginBody">
+    <div class='container-fluid'>
+      <main>
+        <h1 style="text-align: center">Login Form</h1>
+        <div id="loginForm" class='form' >
+          <form action='/users/login' method='POST'>
+            <label for='username'>Username*</label>
+            <input type='text' id='username' name='username' required/>
+            <label for='password'>Password*</label>
+            <input type='password' id='password' name='password' required/>
+            <input class="grow" style="border: 0; color: darkgreen" type='submit' value='Login' />
+          </form>
+
+          {{#if message}}
+            <div>{{message}}</div>
+          {{/if}}
+
+        </div>
+      </main>
+    </div>
+  </body>
+
+</html>

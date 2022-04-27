@@ -4,43 +4,47 @@
     <meta charset="UTF-8" />
     <title>Register Page</title>
     <link href="./styleSheets/style.css" type="text/css" rel="stylesheet" />
-   
   </head>
 
-  <body >
+  <body class="registerBody" >
     <div  class="container">
       <main>
-      
         <h1>Register Form</h1>
-        <div class="form" style="">
+        <div id="registerForm" class="form" style="">
           <form action="/users/register" method="POST">
-            <label for="firstName">First name</label>
-            <input type="text" id="firstName" name="firstName" />
-
+          <div class="input-group mb-3">
+            <label for="firstName">First name*</label>
+            <input type="text" id="firstName" name="firstName" required/>
+          </div>
+          <div class="input-group mb-3">
             <label for="lastName">Last name</label>
             <input type="text" id="lastName" name="lastName" />
-
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" />
-
-            <label for="email">Email (required)</label>
+          </div>
+          <div class="input-group mb-3">
+            <label for="username">Username*</label>
+            <input type="text" id="username" name="username" required/>
+          </div>
+          <div class="input-group mb-3">
+            <label for="email">Email*</label>
             <input type="email" id="email" name="email" required />
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-
-            <label for="repeatPassword">Re-Password</label>
-            <input type="password" id="repeatPassword" name="repeatPassword" />
-            <input type="submit" value="Register" />
+          </div>
+          <div class="input-group mb-3">
+            <label for="password">Password*</label>
+            <input type="password" id="password" name="password" required/>
+          </div>
+          <div class="input-group mb-3">
+            <label for="repeatPassword">Re-Password*</label>
+            <input type="password" id="repeatPassword" name="repeatPassword" required/>
+          </div>
+            <input class="grow" type="submit" value="Register" />
           </form>
           {{#if message}}
-    <div>{{message}}</div>
-    {{/if}}
+            <div>{{message}}</div>
+          {{/if}}
         </div>
         </div>
       </main>
     </div>
-
   </body>
-
+  
 </html>

@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const saltRounds = +process.env.BCRYPT_SALT;
 const User = require('../models/User');
+const assignJWT = require('../middleware/assignJWT');
 
 router.get('/register', (req, res) => {
   res.render('register');
@@ -11,11 +12,6 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
   const { firstName, lastName, username, email, password, repeatPassword } =
     req.body;
-  if (!firstName || !lastName || !username || !email || !password) {
-    return res.render('register', {
-      message: 'Please fill the form in its entirerty!',
-    });
-  }
 
   const uName = await User.findOne({ username: username });
 
@@ -39,8 +35,21 @@ router.post('/register', async (req, res) => {
     });
 
     await newUser.save();
-    res.redirect('/');
+    res.redirect('/users/login');
   }
+});
+
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.post('/login', assignJWT, (req, res, next) => {
+  res.redirect('/');
+});
+
+router.get('/logout', async (req, res) => {
+  res.clearCookie('loggedIn');
+  res.redirect('/');
 });
 
 module.exports = router;
