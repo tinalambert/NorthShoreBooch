@@ -1,7 +1,9 @@
-
+.carousel-item {
+  height: 24rem;
+}
 .carousel-caption {
   position: absolute;
-  padding: 50px;
+  padding: 100px;
   background-color: rgba(0,0,0,0.4);
   bottom: 0;
   left: 0;
@@ -77,4 +79,9 @@ input:valid {
 .grow:hover {
   transform: scale(1.1);
 }
+
+#addProduct {
+  background-image: src="https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+}
+
 
