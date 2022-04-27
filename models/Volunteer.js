@@ -3,10 +3,11 @@ const { Schema } = require('mongoose');
 
 const volunteerSchema = Schema({
 
-    username: String,
-    task: String,
-    location: String,
-    availability: Date 
+    firstName: String,
+    lastName: String,
+    email: String,
+    phoneNumber: Number,
+    task: String
 
 })
 
