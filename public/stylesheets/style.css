@@ -28,9 +28,53 @@
 }
 
 input:invalid {
-  border: 2px solid red;
+ 
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid red;
+  background-color: rgba(0, 0, 0, 0);
+  
 }
 
 input:valid {
-  border: 2px solid black;
+  
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid black;
+  background: rgba(0, 0, 0, 0);
+  
 }
+
+
+
+.loginBody {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmy7MVX-gvv1didbV6d5ET7fBBXBdq2ryrOw&usqp=CAU");
+ 
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  text-align: center;
+ 
+  color: darkgreen;
+
+}
+.registerBody {
+  background-image: url("https://image.rakuten.co.jp/heath-industrial/cabinet/benefit/st244_2.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  text-align: center;
+  color: white;
+}
+#registerForm {
+  display: inline-block;
+}
+
+.grow {
+  transition: all .2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.1);
+}
+
