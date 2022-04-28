@@ -2,11 +2,13 @@ const mongoose = require('mongoose')
 const { Schema } = require('mongoose'); 
 
 const volunteerSchema = Schema({
+
     firstName: String,
     lastName: String,
     email: String,
     phoneNumber: Number,
-    task: String,  
+    task: String  
+
 })
 
 

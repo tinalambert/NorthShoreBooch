@@ -9,7 +9,8 @@ const productSchema = Schema({
     price: Number,
     seasonality: String,
     reviews: String
-})
+
+});
 
 
 module.exports = mongoose.model('Product', productSchema);
