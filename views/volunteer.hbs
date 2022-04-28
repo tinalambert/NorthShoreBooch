@@ -4,39 +4,47 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css"/>
+
    <title>Shop Kombucha</title>
 </head>
-<body>
+<body class="volunteerBody">
 
 <div class="container">
           <h1>Register as volunteer</h1>
         <div class="form" style="">
           <form action="/volunteer" method="POST">
             <label for="firstName">First name</label>
-            <input type="text" id="firstName" name="firstName" />
+            <input type="text" id="firstName" name="firstName" required />
 
             <label for="lastName">Last name</label>
-            <input type="text" id="lastName" name="lastName" />
+            <input type="text" id="lastName" name="lastName" required />
 
-            <label for="email">Email (required)</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" required />
 
             <label for="phoneNumber">Phone number</label>
-            <input type="phoneNumber" id="phoneNumber" name="password" />
+            <input type="phoneNumber" id="phoneNumber" name="phoneNumber"/>
 
            <label for="task">Available tasks:</label>
             <select id="task" name="task" type="task">
-            <option value="1">Kombucha Farm</option>
-            <option value="2">Garden Center</option>
-            <option value="3">Groundskeeper</option>
-            <option value="4">Undecided</option>
+            <option value="Kombucha Farm">Kombucha Farm</option>
+            <option value="Garden Center">Garden Center</option>
+            <option value="GroundsKeeper">Groundskeeper</option>
+            <option value="Undecided">Undecided</option>
           </select>
+          <div>
+          <input type="submit" value="submit"/>
+          </div>
           </form>
-    
-  <button type="submit" class="btn btn-primary">Submit</button>
+          {{#if message}}
+          <div>
+          {{message}}  
+          </div>
+          {{/if}}
   <br>
   <br>
-  <h5>A North Shore Booch volunteer will reach out to you within 24 hours</h5>
+  <h5>A North Shore Booch volunteer will reach out to you within 24 hours.</h5>
 </form>
 </div>
 

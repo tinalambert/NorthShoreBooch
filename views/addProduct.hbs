@@ -1,86 +1,102 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Add a product</title>
-</head>
-<body>
 
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Add a product</title>
-</head>
-<body>
-<div class="container">
-   <h5>Add to Kombucha Inventory</h5>
-<form>
-   <div class="row mb-3">
-    <label for="inputFirstName" class="col-sm-2 col-form-label">Name*</label>
-    <div class="col-sm-10 col-lg-4">
-      <input type="name" class="form-control" id="inputFirstName">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="inputLastName" class="col-sm-2 col-form-label">Image*</label>
-    <div class="col-sm-10 col-lg-4">
-      <input type="name" class="form-control" id="inputLastName">
-    </div>
-  </div>
-   <div class="row mb-3">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Description*</label>
-    <div class="col-sm-10 col-lg-4">
-      <input type="email" class="form-control" id="inputEmail3" required>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="inputPhoneNumber3" class="col-sm-2 col-form-label">Price*</label>
-    <div class="col-sm-10 col-lg-4">
-      <input type="password" class="form-control" id="inputPhoneNumber3">
-    </div>
-  </div>
-  <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-2 pt-0">Seasonality</legend>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-        <label class="form-check-label" for="gridRadios1">
-          Winter
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-        <label class="form-check-label" for="gridRadios2">
-          Spring
-        </label>
-      </div>
-      <div class="form-check disabled">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-        <label class="form-check-label" for="gridRadios3">
-          Summer
-        </label>
-      </div>
-      <div class="form-check disabled">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-        <label class="form-check-label" for="gridRadios3">
-          Fall
-        </label>
-      </div>
-    </div>
-  </fieldset>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <br>
-  <br>
-</form>
-</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a product</title>
+  </head>
+  <body>
 
-</body>
+    <div class="container" id="addProduct">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/products/add"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Add a product</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Product Name*</label>
+                  <input
+                    type="text"
+                    name="productName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Price*</label>
+                  <input
+                    type="text"
+                    name="productPrice"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="formFile" class="form-label">Upload Image*</label>
+                  <input type="file" name="image" id="formFile" required />
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end">Add Product</button>
+                </div>
+              </div>
+            </form>
+            <p class="p-3">To view your current products, please click <a href="/products">here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
 </html>
 
-</body>
-</html>
+{{! <div class="container">
+  <h5>Add to Kombucha Inventory</h5>
+  <form action="/products/add" method="POST">
+    <div class="row mb-3">
+      <label for="productName" class="col-sm-2 col-form-label">Name*</label>
+      <div class="col-sm-10 col-lg-4">
+        <input type="text" class="form-control" />
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Description*</label>
+      <div class="col-sm-10 col-lg-4">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required /></textarea>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="price" class="col-sm-2 col-form-label">Price*</label>
+      <div class="col-sm-10 col-lg-4">
+        <input type="number" class="form-control" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="formFile" class="form-label col-sm-2 col-form-label">Image*</label>
+      <div class="col-sm-10 col-lg-4">
+        <input class="form-control" type="file" id="formFile" />
+      </div>
+    </div>
+    <input type="submit" value="Add Product"></input>
+    <br />
+    <br />
+  </form>
+</div> }}

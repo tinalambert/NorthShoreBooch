@@ -1,18 +1,17 @@
 const express = require("express");
+const async = require("hbs/lib/async");
 const router = express.Router();
 const Volunteer = require("../models/Volunteer")
 
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
    res.render("volunteer", {title: "Volunteer Registration"})
 })
 
-router.post("/volunteer", async (req, res) => {
+router.post("/", async (req, res) => {
    const { firstName, lastName, email, phoneNumber, task } = req.body;
-
-// if(!firstName || !lastName || !email || !phoneNumber || !task) {
-//    return res.render('volunteer', {message: 'Please fill the form out completely!'})
-// }
+   console.log(req.body);
+   console.log(firstName, lastName, email, phoneNumber, task);
 
 const uVolunteer = await Volunteer.findOne({ email: email })
 
@@ -30,10 +29,24 @@ if(uVolunteer) {
       task: task
    });
 
-   await newVolunteer.save();
-   res.redirect('/');
+   await newVolunteer.save((err) => {
+      if (err) {
+         const error = newVolunteer.validateSync().errors; 
+         if (error.firstName) {
+            return res.render("volunteer", {message: error.firstName.message}); 
+         } 
+         if (error.lastName) {
+            return res.render("volunteer", {message: error.lastName.message});
+         }
+         if (error.email) {
+            return res.render("volunteer", {message: error.email.message});
+         } 
+      } else {
+         console.log("Volunteer saved, check DB!")
+         res.redirect('/');
+      }
+   });
 }
-
 }); 
 
 module.exports = router;
