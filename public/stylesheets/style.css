@@ -84,6 +84,7 @@ input:valid {
   background-image: src="https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 }
 
+<<<<<<< HEAD
 
 .volunteerBody {
   background-image: url("https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
@@ -93,5 +94,10 @@ input:valid {
   
   text-align: center;
   color: white;
+=======
+/* layout.hbs */
+svg {
+  color: gray;
+>>>>>>> main
 }
 
