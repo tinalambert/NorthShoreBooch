@@ -95,3 +95,6 @@ input:valid {
   color: white;
 }
 
+svg {
+  color: gray;
+}
