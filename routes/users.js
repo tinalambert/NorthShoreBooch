@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = +process.env.BCRYPT_SALT;
 const User = require('../models/User');
 const assignJWT = require('../middleware/assignJWT');
+const passport = require('passport');
 
 router.get('/register', (req, res) => {
   res.render('register');
@@ -43,9 +44,17 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.post('/login', assignJWT, (req, res, next) => {
-  res.redirect('/');
-});
+// router.post('/login', assignJWT, (req, res, next) => {
+//   res.redirect('/');
+// });
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+  })
+);
 
 router.get('/logout', async (req, res) => {
   res.clearCookie('loggedIn');

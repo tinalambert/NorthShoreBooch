@@ -6,12 +6,18 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
+const passport = require('passport');
+
+const User = require('./models/User');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
 const addProductRouter = require('./routes/addProduct');
 const volunteerRouter = require('./routes/volunteer');
+
+const flash = require('express-flash');
+const session = require('express-session');
 
 const app = express();
 
@@ -26,6 +32,14 @@ mongoose
   .then((res) => console.log('db connected'))
   .catch((err) => console.log(err));
 
+//////////////////// testing PASSPORT ///////////////////
+
+const initializePassport = require('./passport-config');
+initializePassport(passport, (username) => {
+  return User.findOne({ username: username });
+});
+
+////////////////////////////////////////////////
 // view engine setup
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +50,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(flash());
+app.use(
+  session({
+    secret: process.env.JWT_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
