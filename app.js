@@ -34,10 +34,10 @@ mongoose
 
 //////////////////// testing PASSPORT ///////////////////
 
-const initializePassport = require('./passport-config');
-initializePassport(passport, (username) => {
-  return User.findOne({ username: username });
-});
+// const initializePassport = require('./passport-config');
+// initializePassport(passport, (username) => {
+//   return User.findOne({ username: username });
+// });
 
 ////////////////////////////////////////////////
 // view engine setup
@@ -51,16 +51,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(flash());
-app.use(
-  session({
-    secret: process.env.JWT_SECRET,
-    resave: false,
-    saveUninitialized: false,
-  })
-);
+// app.use(flash());
+// app.use(
+//   session({
+//     secret: process.env.JWT_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
+
+//// passport middleware /////////
 app.use(passport.initialize());
-app.use(passport.session());
+
+/// passport config ///////
+require('./passport-config')(passport);
+
+// app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

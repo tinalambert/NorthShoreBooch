@@ -32,7 +32,7 @@ const assignJWT = async (req, res, next) => {
   }
 
   ///////////////// UNSURE IF I WILL USE THESE ///////////////////
-  //   res.token = token;
+  res.token = token;
   //   res.loggedIn = true;
 
   next();

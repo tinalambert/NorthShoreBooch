@@ -44,16 +44,26 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.post('/login', assignJWT, (req, res, next) => {
-//   res.redirect('/');
-// });
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true,
-  })
+router.post('/login', assignJWT, (req, res, next) => {
+  res.send(res.token);
+  // res.redirect('/');
+});
+// router.post(
+//   '/login',
+//   passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/login',
+//     failureFlash: true,
+//   })
+// );
+
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json(req.user);
+    // res.redirect('/');
+  }
 );
 
 router.get('/logout', async (req, res) => {
