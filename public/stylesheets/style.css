@@ -96,3 +96,7 @@ input:valid {
 svg {
   color: gray; 
 }
+
+.eventBody {
+  background-color: whitesmoke; 
+}
