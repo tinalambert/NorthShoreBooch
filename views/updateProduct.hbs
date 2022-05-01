@@ -1,0 +1,71 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update product</title>
+  </head>
+  <body>
+
+    <div class="container" id="updateProduct">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/products/update/{{product.id}}"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Update product</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Product Name*</label>
+                  <input
+                    type="text"
+                    name="productName"
+                    class="form-control"
+                    value="{{product.productName}}"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    required
+                  >{{product.description}}</textarea>
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Price*</label>
+                  <input
+                    type="text"
+                    name="productPrice"
+                    class="form-control"
+                    value="{{product.productPrice}}"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="formFile" class="form-label">Upload Image*</label>
+                  <input type="file" name="image" id="formFile" value="{{product.image}}" required />
+                  <p>{{product.image}}</p>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end">Update Product</button>
+                </div>
+              </div>
+            </form>
+            <p class="p-3">To view your current products, please click <a href="/products">here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+</html>
