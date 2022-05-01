@@ -11,10 +11,11 @@
     <h5 class="card-title">{{product.productName}}</h5>
     <p class="card-text">{{product.description}}</p>
     <p class="card-text">{{product.productPrice}}</p>
-  
-  <button class="btn btn-success" type="button">Add to cart</button>
+
+  <a class="btn btn-success" type="submit" href="/cart">Add to cart</a>
   <a class="btn btn-success" type="submit" href="/products/update/{{product._id}}">Update</a>
   <a class="btn btn-success" type="submit" href="/products/delete/{{product._id}}">Delete</a>
   </div>
 </div>
 </div>
+
