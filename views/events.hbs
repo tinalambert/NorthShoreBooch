@@ -50,7 +50,7 @@
 </div>
    </main>
 
-   <h1>Add event:</h1>
+   <h6>Add event:</h6>
            <div id="registerForm" class="form" style="">
           <form action="/events" method="POST">
           <div class="input-group mb-3">
@@ -69,11 +69,16 @@
             <label for="imageUrl">Attach Image/Flyer:</label>
             <input type="imageUrl" id="imageUrl" name="imageUrl" required />
           </div>
-            <input class="grow" type="submit" value="Add Event"/>
+            <input class="grow" type="submit" value="Sumbit"/>
           </form>
-    {{#each events}}
-      {{> tempEvents event=this}}
-    {{/each}}  
+
+          <div class="container">
+            <div class="row g-3">
+              {{#each events}}
+                {{> tempEvents event=this}}
+              {{/each}}
+          </div>
+            </div> 
 
     {{#if message}}
     <div>
