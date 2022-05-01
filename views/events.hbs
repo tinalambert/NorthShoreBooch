@@ -18,7 +18,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/images/gardenCenter.jpeg" class="d-block w-100" alt="...">
+      <img src="/images/608D45BD-80B6-48A0-A04B-142ECD44D27C.JPG" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h1>Visit our family-owned Kombucha farm in North Shore Hawaii</h1>
                <p>Find out how to get involved.</p>
@@ -50,27 +50,58 @@
 </div>
    </main>
 
-   <h6>Add event:</h6>
-           <div id="registerForm" class="form" style="">
-          <form action="/events" method="POST">
-          <div class="input-group mb-3">
-            <label for="event">Event:</label>
-            <input type="text" id="event" name="event" required/>
+<div class="container" id="addBox">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/events"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Add event</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Event Name*</label>
+                  <input
+                    type="text"
+                    id="event"
+                    name="event"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Event Date*</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image*</label>
+                  <input type="imageUrl" name="imageUrl" id="imageUrl"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Add to Calendar</button>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="input-group mb-3">
-            <label for="date">Date:</label>
-            <input type="text" id="date" name="date" required/>
-          </div>
-          <div class="input-group mb-3">
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required/>
-          </div>
-          <div class="input-group mb-3">
-            <label for="imageUrl">Attach Image/Flyer:</label>
-            <input type="imageUrl" id="imageUrl" name="imageUrl" required />
-          </div>
-            <input class="grow" type="submit" value="Submit"/>
-          </form>
+        </div>
+      </div>
+    </div>
 
           <div class="container">
             <div class="row g-3">
