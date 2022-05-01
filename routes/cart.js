@@ -4,17 +4,35 @@ const router = express.Router();
 const Cart = require('../models/Cart');
 const User = require("../models/User");
 const Product = require("../models/Product");
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
+const assignJWT = require("../middleware/assignJWT");
 
 router.get('/', async (req, res) => {
+
     let cart;
     cart = await Cart.findById(req.params.id);
     let products = [];
     products = await Product.find();
-    res.render("cart")
+
+    let token = req.cookies.token
+  console.log("TOKEN IS ", token)
+  let secret = process.env.JWT_SECRET;
+
+  let loggedIn = req.loggedIn
+  // let decoded = jwt.verify(token, secret, {complete:true})
+
+  // console.log("verified id is...", verified.payload.id)
+
+    // let user = User.find()
+    
+
+    res.render("cart", {token})
 });
     
 router.post("/", async (req, res) => {
         let userId = req.params.id;
+        console.log("User ID is ", userId)
         let cartId = req.body.cart;
         let carts = await Cart.find();
         let user = await User.findById(userId);
