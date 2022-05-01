@@ -8,7 +8,7 @@
 
    <title>North Shore Booch</title>
 </head>
-<body>
+<body class="eventBody">
    <main>
 `<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -48,7 +48,37 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-   </main>    
+   </main>
 
+   <h1>Add event:</h1>
+           <div id="registerForm" class="form" style="">
+          <form action="/events" method="POST">
+          <div class="input-group mb-3">
+            <label for="event">Event:</label>
+            <input type="text" id="event" name="event" required/>
+          </div>
+          <div class="input-group mb-3">
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date" required/>
+          </div>
+          <div class="input-group mb-3">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required/>
+          </div>
+          <div class="input-group mb-3">
+            <label for="imageUrl">Attach Image/Flyer:</label>
+            <input type="imageUrl" id="imageUrl" name="imageUrl" required />
+          </div>
+            <input class="grow" type="submit" value="Add Event"/>
+          </form>
+    {{#each events}}
+      {{> tempEvents event=this}}
+    {{/each}}  
+
+    {{#if message}}
+    <div>
+      {{message}}
+    </div>
+    {{/if}}
 </body>
 </html>
