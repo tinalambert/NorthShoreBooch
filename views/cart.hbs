@@ -7,13 +7,24 @@
     <title>Cart</title>
 </head>
     <body>
-    <p>This is the cart</p>
-    
-    {{!-- <ul class="cartItems">
-    {{#each products}}
-    <li>{{this}}</li>
-    {{/each}}
-    </ul> --}}
+    <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="mb-4 d-block mx-auto" src="/images/logo.png" height="72" />
 
-    </body>
+        <h2>Your Cart</h2>
+        <p class="lead">Get your Booch!</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row g-3">
+          <ul class="cartItems">
+            {{#each products}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        </div>
+    </div>
+</body>
 </html>
