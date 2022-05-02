@@ -91,9 +91,9 @@ div#addProduct {
   color: white;
 }
 
-#cartBtn {
-  display: block;
-  background-color: green
+#cartBtn:hover {
+  color: green;
+  transform: scale(1.2)
 }
 
 svg {

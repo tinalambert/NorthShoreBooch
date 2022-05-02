@@ -21,6 +21,7 @@ const userSchema = Schema({
 
 userSchema.methods.addToCart = function(product){
   const cartItems = [...this.cart.items];
+  let count = 0;
 
     if (cartItems.includes(product.productId)) {
       console.log("This item is already in your cart")
@@ -30,6 +31,12 @@ userSchema.methods.addToCart = function(product){
    
   console.log("items saved, check your db")
   const updatedCart = { items : cartItems };
+
+  cartItems.forEach(item => {
+    count++
+  })
+
+  console.log("count is ", count)
 
   this.cart =  updatedCart;
   return this.save()
