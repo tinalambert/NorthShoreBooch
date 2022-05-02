@@ -5,7 +5,9 @@ const Event = require('../models/Event');
 router.get('/', async function(req, res) {
     console.log('events is firing.')
 
-    const events = await Event.find({}).lean()
+    const events = await Event.find({})
+    .lean()
+    .sort('date')
 
     res.render('events', {events}); 
 })
@@ -40,7 +42,10 @@ router.post('/', async (req, res) => {
             res.redirect('events'); 
         }
     })
-
 })
+
+router.get('/signUp', (req, res) => {
+    console.log('firing!')
+})    
 
 module.exports = router; 
