@@ -47,8 +47,6 @@ input:valid {
   
 }
 
-
-
 .loginBody {
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmy7MVX-gvv1didbV6d5ET7fBBXBdq2ryrOw&usqp=CAU");
  
@@ -92,6 +90,11 @@ div#addProduct {
   
   text-align: center;
   color: white;
+}
+
+#cartBtn {
+  display: block;
+  background-color: green
 }
 
 svg {
