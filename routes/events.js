@@ -42,7 +42,10 @@ router.post('/', async (req, res) => {
             res.redirect('events'); 
         }
     })
-
 })
+
+router.get('/signUp', (req, res) => {
+    console.log('firing!')
+})    
 
 module.exports = router; 
