@@ -26,7 +26,8 @@ const volunteerSchema = Schema({
         }
     },
     phoneNumber: Number,
-    task: String  
+    task: String,
+    assignedT: []   
 
 })
 

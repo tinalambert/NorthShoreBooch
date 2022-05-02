@@ -8,7 +8,7 @@
 
    <title>North Shore Booch</title>
 </head>
-<body>
+<body class="eventBody">
    <main>
 `<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -18,7 +18,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/images/gardenCenter.jpeg" class="d-block w-100" alt="...">
+      <img src="/images/608D45BD-80B6-48A0-A04B-142ECD44D27C.JPG" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h1>Visit our family-owned Kombucha farm in North Shore Hawaii</h1>
                <p>Find out how to get involved.</p>
@@ -48,7 +48,76 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-   </main>    
+   </main>
 
+<div class="container" id="addBox">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/events"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Add event</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Event Name*</label>
+                  <input
+                    type="text"
+                    id="event"
+                    name="event"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Event Date*</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <input type="imageUrl" name="imageUrl" id="imageUrl"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Add to Calendar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+          <div class="container">
+            <div class="row g-3">
+              {{#each events}}
+                {{> tempEvents event=this}}
+              {{/each}}
+          </div>
+            </div> 
+
+    {{#if message}}
+    <div>
+      {{message}}
+    </div>
+    {{/if}}
 </body>
 </html>
