@@ -1,107 +1,52 @@
 <body>
-    <body class="bg-light">
-    <div class="container">
-      <div class="py-5 text-center">
-        <img class="mb-4 d-block mx-auto" src="/images/logo.png" height="72" />
-
-        <h2>Checkout</h2>
-        <p class="lead">Get your Booch!</p>
-      </div>
-    </div>
-
-    <div class="container">
+<div class="container">
       <h4 class="mb-3">Billing address</h4>
       <form novalidate>
         <div class="row g-3">
           <div class="col-sm-6">
-            <label for="firstName" 
-            class="form-label">First Name</label>
-            <input
-              id="firstName"
-              type="text"
-              class="form-control"
-              placeholder="First Name"
-              required>
-              <div class="invalid-feedback">
-                  Valid first name is required.
-              </div>
+            <label for="firstName" class="form-label">First Name</label>
+            <input id="firstName" type="text" class="form-control" placeholder="First Name" required>
+              <div class="invalid-feedback">Valid first name is required.</div>
           </div>
           <div class="col-sm-6">
-            <label for="firstName" 
-            class="form-label">Last Name</label>
-            <input
-              id="lastName"
-              type="text"
-              class="form-control"
-              placeholder="Last Name"
-              required>
-              <div class="invalid-feedback">
-                  Valid last name is required.
-              </div>
+            <label for="firstName" class="form-label">Last Name</label>
+            <input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
+              <div class="invalid-feedback">Valid last name is required.</div>
           </div>
           <div class="col-12">
-            <label for="username" 
-            class="form-label">Username</label>
-            <div class="input-group">
-                <span 
-                class="input-group-text">@</span>
-                <input
-                id="username"
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                required>
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group"><span class="input-group-text">@</span>
+                <input id="username" type="text" class="form-control" placeholder="Username" required>
             </div>
-                <div class="invalid-feedback">
-                Valid username is required.
-                </div>
+                <div class="invalid-feedback">Valid username is required.</div>
             </div>
               <div class="col-md-5">
-                <label for="country" 
-                class="form-label">Country</label>
-                    <select
-                    id="country"
-                    class="form-control">
+                <label for="country" class="form-label">Country</label>
+                    <select id="country" class="form-control">
                         <option value="">Select One</option>
                         <option value="United States">United States</option>
                         <option value="Australia">Australia</option>
                     </select>
             </div>
-                <div class="invalid-feedback">
-                    Valid username is required.
-                </div>
+                <div class="invalid-feedback">Valid username is required.</div>
             </div>
                   <div class="col-md-4">
-                    <label for="state" 
-                    class="form-label">State</label>
-                        <select
-                        id="state"
-                        class="form-control">
+                    <label for="state" class="form-label">State</label>
+                        <select id="state" class="form-control">
                             <option value="">Select One</option>
                             <option value="Hawaii">Hawaii</option>
                             <option value="California">California</option>
                         </select>
                 </div>
-                    <div class="invalid-feedback">
-                        Valid username is required.
-                    </div>
+                    <div class="invalid-feedback">Valid username is required.</div>
             </div>
                       <div class="col-md-3">
-                        <label for="zipcode" 
-                        class="form-label">Zipcode</label>
-                            <input
-                            id="zipcode"
-                            type="number"
-                            class="form-control"
-                            placeholder="zipcode"
-                            required>
-                        <div class="invalid-feedback">
-                            Valid zipcode is required.
-                        </div>
+                        <label for="zipcode" class="form-label">Zipcode</label>
+                            <input id="zipcode" type="number" class="form-control" placeholder="zipcode" required>
+                        <div class="invalid-feedback">Valid zipcode is required.</div>
                     </div>
 
               <hr class="my-4">
-
               <div class="col-12">
                   <div class="form-check">
                       <input id="sameaddress" type="checkbox" class="for-check-input">
@@ -112,21 +57,16 @@
                     <label for="saveinfo" class="form-label">Save Info</label>
                 </div>
               </div>
-
               <hr class="my-4">
-            
               <h4 class="mb-3">Payments</h4>
-
               <div class="form-check">
                   <input id="creditCard" name="paymentMethod" type="radio" class="form-check-input" checked required>
                   <label for="creditCard">Credit Card</label>
               </div>
-
               <div class="form-check">
                   <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" checked required>
                   <label for="paypal">PayPal</label>
               </div>
-
               <div class="form-check">
                   <input id="applepay" name="paymentMethod" type="radio" class="form-check-input" checked required>
                   <label for="applepay">ApplePay</label>
@@ -136,47 +76,34 @@
                   <input id="venmo" name="paymentMethod" type="radio" class="form-check-input" checked required>
                   <label for="venmo">Venmo</label>
               </div>
-
             <div class="form-check">
                 <input id="cashapp" name="paymentMethod" type="radio" class="form-check-input" checked required>
                 <label for="cashapp">Cash App</label>
             </div>
-
             <div class="row my-3 gy-6">
                 <div class="col-md-6">
                     <label for="fullName" class="form-label">Name on Card</label>
                     <input id="fullName" type="text" class="form-control">
-                    <small class="text-muted">
-                        Full name as displayed on card.
-                    </small>
-                    <div class="invalid-feedback">
-                        Valid name is required.
-                    </div>
+                    <small class="text-muted">Full name as displayed on card.</small>
+                    <div class="invalid-feedback">Valid name is required.</div>
                 </div>
                 <div class="col-md-6">
                     <label for="ccNum" class="form-label">Credit Card Number</label>
                     <input id="ccNum" type="text" class="form-control">
-                    <div class="invalid-feedback">
-                        Valid card number is required.
-                    </div>
+                    <div class="invalid-feedback">Valid card number is required.</div>
                 </div>
                 <div class="col-md-3">
                     <label for="expDate" class="form-label">Expiration Date</label>
                     <input id="expDate" type="text" class="form-control">
-                    <div class="invalid-feedback">
-                        Valid expration date is required.
-                    </div>
+                    <div class="invalid-feedback">Valid expration date is required.</div>
                 </div>
                 <div class="col-md-3">
                     <label for="cvv" class="form-label">CVV</label>
                     <input id="cvv" type="text" class="form-control">
-                    <div class="invalid-feedback">
-                        CVV is located on the back of your card.
-                    </div>
+                    <div class="invalid-feedback">CVV is located on the back of your card.</div>
                 </div>
             </div>
     <hr class="my-4">
-
     <button class="btn btn-primary btn-lg btn-block">Continue to Checkout</button>
             </div>
       </form>
