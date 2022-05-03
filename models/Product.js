@@ -6,6 +6,7 @@ const productSchema = Schema({
     image: String, 
     description: String,
     productPrice: String,
+    userId: { type: Schema.Types.ObjectId, ref: "User" }
     // seasonality: String
 })
 
