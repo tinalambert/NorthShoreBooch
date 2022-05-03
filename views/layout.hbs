@@ -56,21 +56,11 @@
         </li>
         {{/if}}
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">DONATE</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-          </ul>
-          <form class="d-flex">
+      <form class="d-flex" action="/search" method="GET">
             
-            <input class="form-control me-2" type="search" placeholder="Search"aria-label="Search"
-            />
+            <input type="text" class="search" name="search"aria-label="search"/>
+            <input type="submit" value="search">
           </form>
-            <button class="btn btn-outline-success p-2" type="submit">DONATE</button>
             <br>
             <br>
             <a href="/cart" class="p-3">
@@ -80,14 +70,12 @@
                 ></path>
               </svg>
             </a>
+            <button class="btn btn-outline-success p-2" type="submit">DONATE</button>
           </form>  
-            <form action="/search" method="GET">
-            <input type="text" class="search" name="search"aria-label="search"/>
-            <input type="submit" value="search">
-          </form>
-        </div>
-      </div>
-    </nav>
+    </div>
+  </div>
+</nav>
+
 
     {{{body}}}
 

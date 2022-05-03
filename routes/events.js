@@ -3,7 +3,7 @@ const router = express.Router();
 const Event = require('../models/Event');
 
 router.get('/', async function (req, res) {
-  console.log('events is firing.');
+  // console.log('events is firing.');
   let loggedIn = false;
   if (req.cookies.loggedIn) {
     loggedIn = true;
@@ -16,8 +16,8 @@ router.get('/', async function (req, res) {
 
 router.post('/', async (req, res) => {
   const { event, date, description, imageUrl } = req.body;
-  console.log(req.body);
-  console.log(event, date, description, imageUrl);
+  // console.log(req.body);
+  // console.log(event, date, description, imageUrl);
 
   const newEvent = new Event({
     event: event,
