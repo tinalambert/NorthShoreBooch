@@ -124,3 +124,7 @@ svg {
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
+
+#searchBtn {
+  background-color: green;
+}
