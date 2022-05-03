@@ -111,6 +111,93 @@ svg {
   text-align: left;
 }
 
+/* Cart Styling  */
+.cart{
+  background-color: white;
+}
+
+table{
+  width: 80%;
+  margin: auto;
+  font-size: 2.5rem;
+}
+
+th {
+  border-bottom: solid 2px #151515; text-align: center;
+}
+
+tr {
+  border-bottom: solid 2px gray;
+}
+
+th, td {
+  width:33%;
+  padding:1rem 2rem;
+  margin:1rem 4rem;
+}
+
+td>img{
+  width:14rem;
+  height:14rem;
+  object-fit:cover;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+td:nth-child(2){
+  padding-left:0;
+  margin:0;
+  text-align:left;
+}
+
+input[type="number"] 
+{
+  border-radius: .5rem;
+  outline: lightblue, solid 3px;
+  border: none;
+  width:6rem;
+  height:4rem;
+  text-align: center;
+}
+
+input::web-kit-inner-spin-button,
+input::web-kit-outer-spin-button
+{
+  -webkit-appearance: none;
+}
+
+.rm-button{
+  background-color: #fff;
+  border:none;
+  display:inline;
+  position: relative;
+  color:red;
+  font-size:1.9rem;
+  font-weight:700;
+}
+
+.rm-btn{
+  color:red;
+  border:solid 2px grey;
+  outline:nnone;
+  background-color: #fff;
+  border-radius: 50%;
+  width:28px;
+  height:28px;
+  font-size: 2.5rem;
+  font-weight: 900;
+  content: '\00d7';
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  position:absolute;
+  left:110%;
+  top: -30%
+}
+
+.totalRow{
+  text-align: right;
+
 #searchResBod {
   background-color: whitesmoke;
 }
@@ -123,4 +210,8 @@ svg {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
+}
+
+#searchBtn {
+  background-color: green;
 }

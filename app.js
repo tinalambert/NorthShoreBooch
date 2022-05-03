@@ -9,6 +9,11 @@ const hbs = require('hbs');
 // const session = require('express-session');
 // const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+
+console.log(stripeSecretKey, stripePublicKey);
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
