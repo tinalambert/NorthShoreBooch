@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
-const Product = require('../models/Product')
+const passportLocalmongoose = require('passport-local-mongoose');
+const Product = require('../models/Product');
 
 const userSchema = Schema({
   firstName: String,
@@ -15,51 +16,49 @@ const userSchema = Schema({
   password: String,
 
   cart: {
-    items: [{ productId: {type: Schema.Types.ObjectId, ref: "Product" }}]
-  }   
+    items: [{ productId: { type: Schema.Types.ObjectId, ref: 'Product' } }],
+  },
 });
 
-userSchema.methods.addToCart = function(product){
+userSchema.plugin(passportLocalmongoose);
+userSchema.methods.addToCart = function (product) {
   const cartItems = [...this.cart.items];
   let count = 0;
 
-    if (cartItems.includes(product.productId)) {
-      console.log("This item is already in your cart")
-    } else {
-      cartItems.push({ productId : product._id});
-    }
-   
-  console.log("items saved, check your db")
-  const updatedCart = { items : cartItems };
+  if (cartItems.includes(product.productId)) {
+    console.log('This item is already in your cart');
+  } else {
+    cartItems.push({ productId: product._id });
+  }
 
-  cartItems.forEach(item => {
-    count++
-  })
+  console.log('items saved, check your db');
+  const updatedCart = { items: cartItems };
 
-  console.log("count is ", count)
+  cartItems.forEach((item) => {
+    count++;
+  });
 
-  this.cart =  updatedCart;
-  return this.save()
-}
+  console.log('count is ', count);
+
+  this.cart = updatedCart;
+  return this.save();
+};
 
 module.exports = mongoose.model('User', userSchema);
-
-
-
 
 // MIGHT NEED THE BELOW FOR FUTURE ADDING/DELETING
 
 // const cartProductIndex  = this.cart.items.findIndex(cp=>{
-  //   console.log("cp product is ", cp)
-  //     return cp._id.toString() === product._id.toString();
-  // });
-  // let newQuantity = 1;
-  // const cartItems = [...this.cart.items];
+//   console.log("cp product is ", cp)
+//     return cp._id.toString() === product._id.toString();
+// });
+// let newQuantity = 1;
+// const cartItems = [...this.cart.items];
 
 // if(cartProductIndex>=0){
-  //     //then product already exists
-  //     newQuantity = this.cart.items[cartProductIndex].quantity + 1;
-  //     cartItems[cartProductIndex].quantity = newQuantity;
-  // }else{
-    // cartItems.push({ productId : product._id});
-     // }
+//     //then product already exists
+//     newQuantity = this.cart.items[cartProductIndex].quantity + 1;
+//     cartItems[cartProductIndex].quantity = newQuantity;
+// }else{
+// cartItems.push({ productId : product._id});
+// }

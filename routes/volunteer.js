@@ -1,8 +1,14 @@
-const express = require("express");
-const async = require("hbs/lib/async");
+const express = require('express');
 const router = express.Router();
-const Volunteer = require("../models/Volunteer")
+const Volunteer = require('../models/Volunteer');
 
+router.get('/', (req, res) => {
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+  }
+  res.render('volunteer', { title: 'Volunteer Registration', loggedIn });
+});
 
 router.get("/", async (req, res) => {
    res.render("volunteer", {title: "Volunteer Registration"})
