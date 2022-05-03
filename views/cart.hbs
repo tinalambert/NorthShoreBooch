@@ -17,14 +17,23 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="row g-3">
-          <ul class="cartItems">
-            {{#each products}}
-                <li>{{this}}</li>
-            {{/each}}
-        </ul>
-        </div>
-    </div>
+     <section id="cartSect">
+        <table>
+            <thead class="thead">
+                <tr>
+                    <th colspan='2'>item</th>
+                    <th>price</th>
+                    <th colspan='2'>quantity</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr class="totalRow">
+                    <td colspan='5'>Total: ${{price}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn checkout-btn">Proceed to Checkout</button>
+    </section>
+
 </body>
 </html>
