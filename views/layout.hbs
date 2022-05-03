@@ -37,19 +37,21 @@
             <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/register">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/login">Login</a>
-        </li>
+        {{#if loggedIn}}
         <li class="nav-item">
           <a class="nav-link" href="/products/add">Add a product</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/users/logout">Logout</a>
         </li>
-
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/users/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/login">Login</a>
+        </li>
+        {{/if}}
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

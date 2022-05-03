@@ -6,9 +6,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
-
-const User = require('./models/User');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -16,8 +16,7 @@ const productRouter = require('./routes/products');
 const addProductRouter = require('./routes/addProduct');
 const volunteerRouter = require('./routes/volunteer');
 
-const flash = require('express-flash');
-const session = require('express-session');
+// const flash = require('express-flash');
 
 const app = express();
 
@@ -32,14 +31,6 @@ mongoose
   .then((res) => console.log('db connected'))
   .catch((err) => console.log(err));
 
-//////////////////// testing PASSPORT ///////////////////
-
-// const initializePassport = require('./passport-config');
-// initializePassport(passport, (username) => {
-//   return User.findOne({ username: username });
-// });
-
-////////////////////////////////////////////////
 // view engine setup
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('views', path.join(__dirname, 'views'));
@@ -52,21 +43,25 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(flash());
+
+//// passport middleware /////////
+app.use(passport.initialize());
+
 // app.use(
 //   session({
 //     secret: process.env.JWT_SECRET,
 //     resave: false,
 //     saveUninitialized: false,
+//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
 //   })
 // );
-
-//// passport middleware /////////
-app.use(passport.initialize());
-
-/// passport config ///////
-require('./passport-config')(passport);
-
 // app.use(passport.session());
+
+require('./passport/passport-jwt')(passport);
+// require('./passport/passport-local')(passport);
+// app.use(passport.authenticate('session'));
+
+// passport.use(User.createStrategy());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
