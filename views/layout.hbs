@@ -74,16 +74,24 @@
 
           </ul>
           <form class="d-flex">
-            <a href="/cart">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+            
+            <input class="form-control me-2" type="search" placeholder="Search"aria-label="Search"
+            />
+          </form>
+            <button class="btn btn-outline-success p-2" type="submit">DONATE</button>
+            <br>
+            <br>
+            <a href="/cart" class="p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-basket" id="cartBtn" viewBox="0 0 16 16">
                 <path
                   d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"
                 ></path>
               </svg>
             </a>
-            <input class="form-control me-2" type="search" placeholder="Search"aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">DONATE</button>
+          </form>  
+            <form action="/search" method="GET">
+            <input type="text" class="search" name="search"aria-label="search"/>
+            <input type="submit" value="search">
           </form>
         </div>
       </div>
@@ -91,7 +99,6 @@
 
     {{{body}}}
 
-    <script src="/calendar.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
