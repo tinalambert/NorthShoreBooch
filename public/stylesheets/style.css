@@ -47,11 +47,8 @@ input:valid {
   
 }
 
-
-
 .loginBody {
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmy7MVX-gvv1didbV6d5ET7fBBXBdq2ryrOw&usqp=CAU");
- 
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -80,8 +77,50 @@ input:valid {
   transform: scale(1.1);
 }
 
-#addProduct {
+div#addProduct {
   background-image: src="https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 }
 
+.volunteerBody {
+  background-image: url("https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  text-align: center;
+  color: white;
+}
+
+#cartBtn:hover {
+  color: green;
+  transform: scale(1.2)
+}
+
+svg {
+  color: gray; 
+}
+
+.eventBody {
+  background-color: lavender; 
+}
+
+#addBox {
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  text-align: left;
+}
+
+#searchResBod {
+  background-color: whitesmoke;
+}
+
+#searchMsg {
+  margin: 0;
+  position: absolute;
+  font-size: larger;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}

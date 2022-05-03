@@ -1,0 +1,36 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+  </head>
+  <body>
+
+    <div class="container" id="addProduct">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/products/delete/{{product.id}}"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-3 text-danger">Are you sure you want to delete:</h3>
+              <h2 class="mb-3">{{product.productName}}</h2>
+                <div class="col-5 mb-2 mx-auto">
+                  <button class="btn btn-danger" style="align-items: center">Yes, delete forever!</button>
+                </div>
+              </div>
+            </form>
+            <p class="p-3">To view your current products, please click <a href="/products">here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+</html>
