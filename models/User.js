@@ -16,8 +16,11 @@ const userSchema = Schema({
   password: String,
 
   cart: {
-    items: [{ productId: { type: Schema.Types.ObjectId, ref: 'Product' } }],
-  },
+
+    items: [{ productId: { type: Schema.Types.ObjectId, ref: "Product" }, 
+    quantity: { type : Number }}]
+  }   
+
 });
 
 userSchema.plugin(passportLocalmongoose);
@@ -25,11 +28,19 @@ userSchema.methods.addToCart = function (product) {
   const cartItems = [...this.cart.items];
   let count = 0;
 
-  if (cartItems.includes(product.productId)) {
-    console.log('This item is already in your cart');
-  } else {
-    cartItems.push({ productId: product._id });
-  }
+
+    if (cartItems.includes(product._id)) {
+      console.log("This item is already in your cart")
+    } else {
+      cartItems.push({ productId : product._id});
+    }
+   
+  console.log("items saved, check your db")
+  const updatedCart = { items : cartItems };
+
+  cartItems.forEach(item => {
+    count++
+  })
 
   console.log('items saved, check your db');
   const updatedCart = { items: cartItems };

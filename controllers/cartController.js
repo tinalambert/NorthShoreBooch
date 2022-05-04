@@ -4,6 +4,29 @@ const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
 const mongoose = require("mongoose");
 
+exports.getCart = async (req, res, next) => {
+  let token = req.cookies.loggedIn;
+  let secret = process.env.JWT_SECRET;
+  let decoded = jwt.verify(token, secret, { complete: true });
+  let userId = decoded.payload.id;
+  
+  const user = await User.findById(userId).populate("cart.items.productId").exec()
+    .then((user) => {
+      console.log("user.cart.items is ", user.cart.items);
+      const cartItems = user.cart.items;
+      // const quantity = user.cart.quantity;
+      // console.log("quantity is ", quantity)
+
+      res.render("cart", {
+        title: "I'm Boochy",
+        cartItems
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 //  //postCart will a particular product (prodId) to the cart , it will check if a product is exis ted first or else it will add new product
 
 // add to cart will go to this route
@@ -13,13 +36,12 @@ exports.postCart = async (req, res, next) => {
   let secret = process.env.JWT_SECRET;
   let decoded = jwt.verify(token, secret, { complete: true });
   let userId = decoded.payload.id;
-  console.log("USER ID IS ", userId);
 
   const user = await User.findById(userId);
-  console.log(user);
+  console.log("cartController.js @ line 41...User is ", user);
 
   const product = await Product.findById(productId);
-  console.log(product);
+  console.log("cartController.js @ line 44, Product is...", product);
 
   Product.findById(productId)
     .then((product) => {
@@ -34,6 +56,11 @@ exports.postCart = async (req, res, next) => {
 };
 
 exports.postCartDeleteProduct = (req, res, next) => {
+  let token = req.cookies.loggedIn;
+  let secret = process.env.JWT_SECRET;
+  let decoded = jwt.verify(token, secret, { complete: true });
+  let userId = decoded.payload.id;
+  
   const productId = req.params.id;
   req.user //always request a user first
     .deleteItemFromCart(productId)
@@ -45,6 +72,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
       console.log(err);
     });
 };
+
 exports.postOrder = (req, res, next) => {
   req.user
     .populate("cart.items.productId")
