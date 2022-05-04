@@ -20,15 +20,20 @@ const assignJWT = async (req, res, next) => {
       return res.render('login', { message: 'Please enter a valid password!' });
     }
 
-    token = jwt.sign({ id: user._id }, secret);
+    const payload = {
+      username: user.username,
+      id: user._id,
+    };
+
+    token = jwt.sign(payload, secret, { expiresIn: '1d' });
     res.cookie('loggedIn', token);
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
 
   ///////////////// UNSURE IF I WILL USE THESE ///////////////////
-  //   res.token = token;
-  //   res.loggedIn = true;
+  res.token = token;
+  res.loggedIn = true;
 
   next();
 };

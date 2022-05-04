@@ -1,10 +1,16 @@
-let express = require("express");
+let express = require('express');
 let router = express.Router();
-const Product = require('../models/Product')
+const Product = require('../models/Product');
+const passport = require('passport');
 
-router.get("/", (req, res) => {
-   res.render("addProduct", {title: "Add Product"})
-})
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    loggedIn = true;
+    res.render('addProduct', { title: 'Add Product', loggedIn });
+  }
+);
 
 router.post("/", async (req, res) => {
    const {name, desciption, price, image} = req.body
@@ -18,10 +24,9 @@ router.post("/", async (req, res) => {
    })
    console.log("NewProduct is ...", newProduct)
 
-   await newProduct.save();
-   console.log("Product saved, check your db")
-   res.redirect('/products')
-   
-})
+  await newProduct.save();
+  console.log('Product saved, check your db');
+  res.redirect('/products');
+});
 
 module.exports = router;
