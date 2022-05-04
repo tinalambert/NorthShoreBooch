@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
       productName: req.body.productName,
       description: req.body.description,
       productPrice: req.body.productPrice,
-      image: req.body.image,
+      imageUrl: req.body.imageUrl,
       // seasonality: req.body.seasonality
    })
    console.log("NewProduct is ...", newProduct)

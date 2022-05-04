@@ -14,7 +14,7 @@
 
 .masthead {
   background-size: cover;
-  min-height:40vh;
+  min-height:50vh;
   position: relative;
   color: white;
 }
@@ -197,6 +197,7 @@ input::web-kit-outer-spin-button
 
 .totalRow{
   text-align: right;
+}
 
 #searchResBod {
   background-color: whitesmoke;
@@ -214,4 +215,13 @@ input::web-kit-outer-spin-button
 
 #searchBtn {
   background-color: green;
+}
+
+#cartImg {
+  background-image: url('../images/farmMountain.JPG');
+}
+
+#cartForm {
+  opacity: 82%;
+  margin-top: 2%;
 }
