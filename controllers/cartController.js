@@ -19,7 +19,8 @@ exports.getCart = async (req, res, next) => {
 
       res.render("cart", {
         title: "I'm Boochy",
-        cartItems
+        cartItems, 
+        user
       });
     })
     .catch((err) => {

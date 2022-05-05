@@ -71,9 +71,9 @@
                     <h5>$ 137.00</h5>
                   </div>
 
-                  <a type="button" class="btn btn-success btn-block btn-lg" href="/checkout"
-                    data-mdb-ripple-color="dark">Proceed to checkout</a>
-
+                  <form action="/checkout/{{user._id}}" method="GET">
+                  <button class="btn btn-success" name="{{user.firstName}}" value="{{user._id}}" type="submit">Proceed to Checkout</button> 
+                  </form>
                 </div>
               </div>
             </div>

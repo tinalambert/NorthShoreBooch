@@ -1,30 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+const secret = process.env.JWT_SECRET;
 const Cart = require('../models/Cart');
+const User = require('../models/User')
+const mongoose = require("mongoose");
 
-router.get('/', (req, res) => {
-  const button = document.querySelector("button")
-  button.addEventListener("click", () => {
-    fetch('/create-checkout-session', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: [
-          {id: 1, quantity: 3},
-          {id: 2, quantity: 1},
-        ],
-      }),
+
+router.get('/:id', async (req, res) => {
+  let token = req.cookies.loggedIn;
+  let secret = process.env.JWT_SECRET;
+  let decoded = jwt.verify(token, secret, { complete: true });
+  let userId = decoded.payload.id;
+  
+  const user = await User.findById(userId).exec()
+  .then((user) => {
+    let cartItems = user.cart.items
+    res.render('checkout', { title: 'Checkout', cartItems, user});
     })
-    .then(res => {
-      if (res.ok) return res.json()
-      return res.json().then(json => Promise.reject(json))
-    }).then(({ url }) => {
-      window.location = url
-    }).catch
-  })
-  res.render('checkout', { title: 'Checkout' });
 });
 
 module.exports = router;
