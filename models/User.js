@@ -42,13 +42,6 @@ userSchema.methods.addToCart = function (product) {
     count++
   })
 
-  console.log('items saved, check your db');
-  const updatedCart = { items: cartItems };
-
-  cartItems.forEach((item) => {
-    count++;
-  });
-
   console.log('count is ', count);
 
   this.cart = updatedCart;
