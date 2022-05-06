@@ -67,9 +67,11 @@
             </li>
             {{#if loggedIn}}
             <li class="nav-item">
+              {{#if isAdmin}}
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add a product</a>
             </li>
+            {{/if}}
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>
@@ -109,6 +111,10 @@
               ></path>
             </svg>
           </a>
+          {{#if loggedIn}}
+          <a href="/users/profile" class="d-flex text-center p-3 py-5"><img class="rounded-circle mt-5" width="20px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"></a>
+          {{/if}}
+        </div>
         </div>
       </div>
     </nav>

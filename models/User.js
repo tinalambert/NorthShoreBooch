@@ -18,6 +18,14 @@ const userSchema = Schema({
   cart: {
     items: [{ productId: { type: Schema.Types.ObjectId, ref: 'Product' } }],
   },
+  isAdmin: { type: Boolean, default: false },
+  avatar: String,
+  phoneNumber: String,
+  streetAddress: String,
+  postalCode: String,
+  city: String,
+  state: String,
+  country: String,
 });
 
 userSchema.plugin(passportLocalmongoose);

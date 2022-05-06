@@ -6,9 +6,10 @@ const secret = process.env.JWT_SECRET;
 const assignJWT = async (req, res, next) => {
   let { username, password } = req.body;
   let token;
+  let user;
 
   try {
-    const user = await User.findOne({ username: username });
+    user = await User.findOne({ username: username });
     if (!user) {
       return res.render('login', {
         message: 'Please check the username and try again!',
@@ -21,7 +22,10 @@ const assignJWT = async (req, res, next) => {
     }
 
     const payload = {
+      firstName: user.firstName,
+      lastName: user.lastName,
       username: user.username,
+      isAdmin: user.isAdmin,
       id: user._id,
     };
 
@@ -32,6 +36,8 @@ const assignJWT = async (req, res, next) => {
   }
 
   ///////////////// UNSURE IF I WILL USE THESE ///////////////////
+
+  res.user = user;
   res.token = token;
   res.loggedIn = true;
 
