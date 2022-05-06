@@ -20,8 +20,8 @@
             <input class="grow" style="border: 0; color: darkgreen" type='submit' value='Login' />
           </form>
 
-          {{#if message}}
-            <div>{{message}}</div>
+          {{#if messages.error}}
+            <div>{{messages.error}}</div>
           {{/if}}
 
         </div>

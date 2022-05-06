@@ -3,7 +3,7 @@ const { Schema } = require('mongoose');
 
 const productSchema = Schema({  
     productName: String,
-    image: String, 
+    imageUrl: String, 
     description: String,
     productPrice: String,
     userId: { type: Schema.Types.ObjectId, ref: "User" }

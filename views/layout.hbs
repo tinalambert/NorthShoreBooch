@@ -65,21 +65,24 @@
                   >Volunteer</a></li>
               </ul>
             </li>
+            {{#if loggedIn}}
             <li class="nav-item">
-              <a class="nav-link" href="/users/register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/login">Login</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add a product</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>
-
-          </ul>
-
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/hollistic">Hollistic</a>
+            </li>
+              <a class="nav-link" href="/users/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/login">Login</a>
+            </li>
+{{/if}}
           <form action="/search" method="GET">
             <input
               type="text"
@@ -90,8 +93,6 @@
             />
             <input id="searchBtn" class="btn btn-success" type="submit" value="search" />
           </form>
-          <br />
-          <br />
           <a href="/cart" class="p-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"

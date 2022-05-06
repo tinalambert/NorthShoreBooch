@@ -8,11 +8,19 @@ const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
 const assignJWT = require("../middleware/assignJWT");
 
-router.get("/", async (req, res, next) => {
-  res.render("cart");
-});
+// router.get("/", async (req, res, next) => {
+//   let products = [];
+//   products = await Product.find()
+
+//   res.render("cart", {title: "Gettin' Boochy", products})
+// });
+
+router.get("/", cartController.getCart)
 
 router.post("/:id", cartController.postCart)
+
+
+
 
 // router.post("/:id", async (req, res) => {
 //   const productId = req.params.id;

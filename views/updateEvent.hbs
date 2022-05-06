@@ -1,0 +1,66 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Event</title>
+  </head>
+  <body>
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/events/update/{{event.id}}"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Modify event</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Event Name*</label>
+                  <input
+                    type="text"
+                    id="event"
+                    name="event"
+                    class="form-control"
+                    value="{{event.event}}"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Event Date*</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    class="form-control"
+                    value="{{event.date}}"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    value="{{event.description}}"
+                    required
+                  ></input>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <input type="imageUrl" name="imageUrl" id="imageUrl" value="{{event.imageUrl}}"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Update</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </body>
+
+</html>

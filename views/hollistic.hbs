@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hollistic Living</title>
+</head>
+<body>
+
+      <div class="masthead"
+        style="background-image: url('https://previews.dropbox.com/p/thumb/ABgmcoeY-yhVwtBC6Z8Qbyi3KnjDkKL-MoT62wSz_8yL_9Y96ZXEZcB3r5oZnvx4_YDQxi9wBwbHuosdkmvwMpOUcP6NmYiJiD3QOpeIuIHr454lXlSY4r3phimNj2DoN1yyiwocXVR3zicp6PsCD-gUBtKUG4ulr3UMzxB6P5Tl80Ec8N_tcUr5Uzc8eCWClkCRaV8zZpcxtTGJu3WcR3BCgT1kr-eHjqbIzC3ZxrYNazUQtOOmoMHq5NOc7VZKhzz6GXAlMMiKMMMuBil9J68IVQPW3qJ4pRXqSeq_OCpVyWiI4qivfF3Sx6f0HuOWDct3dPH8rHqwrSJrscw--uIeOob35kJQP4wBXA1Pj2DdItKIKuKMK35HHqshiN6Otys/p.jpeg');" >
+        <div class="color-overlay d-flex justify-content-center align-items-center">
+            <div class="singleCol container text-center">
+               <h1>Learn about the science, and art of Hollistic living!</h1>
+               <p>Real change comes by empowering the mind, body, and spirit.</p>        
+         </div>
+      </div>
+   </div>
+   <br>
+           <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/hollistic"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Add Article</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Article Title*</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Author*</label>
+                  <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <textarea
+                    type="text"
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+               <div class="mb-3 col-md-12">
+                  <label>Link*</label>
+                  <input
+                    type="text"
+                    id="link"
+                    name="link"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <input type="imageUrl" name="imageUrl" id="imageUrl"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Add to Library</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+   <br> 
+   <div class="container">
+      <div class="row g-3">
+            {{#each articles}}
+            {{> tempArticles article=this}}
+            {{/each}}
+         </div>
+      </div>
+   </div>
+</body>
+</html>
+   
+   

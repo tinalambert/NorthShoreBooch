@@ -1,8 +1,14 @@
-const express = require("express");
-const async = require("hbs/lib/async");
+const express = require('express');
 const router = express.Router();
-const Volunteer = require("../models/Volunteer")
+const Volunteer = require('../models/Volunteer');
 
+router.get('/', (req, res) => {
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+  }
+  res.render('volunteer', { title: 'Volunteer Registration', loggedIn });
+});
 
 router.get("/", async (req, res) => {
    res.render("volunteer", {title: "Volunteer Registration"})
@@ -10,8 +16,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
    const { firstName, lastName, email, phoneNumber, task } = req.body;
-   console.log(req.body);
-   console.log(firstName, lastName, email, phoneNumber, task);
 
 const uVolunteer = await Volunteer.findOne({ email: email })
 

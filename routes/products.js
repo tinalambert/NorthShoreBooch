@@ -3,10 +3,14 @@ const router = express.Router();
 const Product = require("../models/Product");
 
 router.get("/", async (req, res) => {
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+  }
    let products = [];
    products = await Product.find()
    //console.log(products)
-   res.render("products", {title: "Products", products})
+   res.render("products", {title: "Products", products, loggedIn})
 })
 
 router.get("/update/:id", async (req, res) => {
