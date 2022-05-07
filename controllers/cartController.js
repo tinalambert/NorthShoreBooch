@@ -5,9 +5,16 @@ const secret = process.env.JWT_SECRET;
 const mongoose = require("mongoose");
 
 exports.getCart = async (req, res, next) => {
-  let token = req.cookies.loggedIn;
-  let secret = process.env.JWT_SECRET;
-  let decoded = jwt.verify(token, secret, { complete: true });
+  let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, { complete: true });
+    isAdmin = decoded.payload.isAdmin;
+  }
   let userId = decoded.payload.id;
   
   const user = await User.findById(userId).populate("cart.items.productId").exec()
@@ -20,7 +27,9 @@ exports.getCart = async (req, res, next) => {
       res.render("cart", {
         title: "I'm Boochy",
         cartItems, 
-        user
+        user,
+        loggedIn,
+        isAdmin
       });
     })
     .catch((err) => {
