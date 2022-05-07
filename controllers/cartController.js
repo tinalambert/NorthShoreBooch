@@ -12,7 +12,7 @@ exports.getCart = async (req, res, next) => {
   
   const user = await User.findById(userId).populate("cart.items.productId").exec()
     .then((user) => {
-      console.log("user.cart.items is ", user.cart.items);
+      // console.log("user.cart.items is ", user.cart.items);
       const cartItems = user.cart.items;
       // const quantity = user.cart.quantity;
       // console.log("quantity is ", quantity)
@@ -28,7 +28,7 @@ exports.getCart = async (req, res, next) => {
     });
 };
 
-//  //postCart will a particular product (prodId) to the cart , it will check if a product is exis ted first or else it will add new product
+//  //postCart will check a particular product (productId) to the cart , it will check if a product is exis ted first or else it will add new product
 
 // add to cart will go to this route
 exports.postCart = async (req, res, next) => {
@@ -39,16 +39,9 @@ exports.postCart = async (req, res, next) => {
   let userId = decoded.payload.id;
 
   const user = await User.findById(userId);
-  console.log("cartController.js @ line 41...User is ", user);
-
-  const product = await Product.findById(productId);
-  console.log("cartController.js @ line 44, Product is...", product);
-
-  Product.findById(productId)
-    .then((product) => {
-      console.log("add to cart product is ", product);
-
-      return user.addToCart(product);
+  // console.log("user.cart.items is ", user.cart.items )
+  const product = await Product.findById(productId).then(product => {
+    return user.addToCart(product);
     })
     .then((result) => {
       console.log(result);
