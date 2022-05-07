@@ -38,4 +38,43 @@ router.post('/', async (req,res) => {
     });
 });
 
+router.get('/update/:id', async (req, res) => {
+
+    const article = await Article.findById(req.params.id)
+    
+    res.render('updateArticle', {title: "Update Article", article})
+});
+
+router.post('/update/:id', async (req, res) => {
+
+    const articleId = req.params.id
+    const article = await Article.findById(articleId, req.body).exec()
+    
+    await article.save((err) => {
+        if(err) {
+            console.log(err)
+        } else {
+        Article.findByIdAndUpdate(articleId, article).exec()
+        console.log("Article successfully updated, check DB!")
+        res.redirect('/hollistic')    
+        }
+    })
+});
+
+router.get('/delete/:id', async (req, res) => {
+    
+    const articleId = req.params.id;
+    const article = await Article.findById(articleId);
+
+    res.render('deleteArticle', {title: "Delete Article", article}); 
+});
+
+router.post('/delete/:id', async (req, res) => {
+
+    const articleId = req.params.id;
+    const article = await Article.findByIdAndDelete(articleId);
+
+    res.redirect('/hollistic'); 
+})
+
 module.exports = router; 
