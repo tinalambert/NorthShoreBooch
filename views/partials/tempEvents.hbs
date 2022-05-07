@@ -12,6 +12,9 @@
     <p class="card-text">{{event.description}}</p>
     <p class="card-text">{{event.date}}</p>
   <button class="btn btn-success" action="/signUp" method="GET" type="button">Sign up!</button>
+  <br>
+  <a class="btn btn-success" type="submit" href="/events/update/{{event._id}}">Update</a>
+  <a class="btn btn-success" type="submit" href="/events/delete/{{event._id}}">Delete</a>
 </div>
 </div>
 </div>
