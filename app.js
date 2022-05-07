@@ -24,6 +24,7 @@ const cartRouter = require('./routes/cart');
 const eventsRouter = require('./routes/events');
 const checkoutRouter = require('./routes/checkout');
 const searchRouter = require('./routes/search');
+const plantsRouter = require('./routes/plants');
 
 // const flash = require('express-flash');
 
@@ -81,6 +82,7 @@ app.use('/cart', cartRouter);
 app.use('/events', eventsRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/search', searchRouter);
+app.use('/plants', plantsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
