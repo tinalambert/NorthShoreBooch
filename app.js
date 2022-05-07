@@ -6,15 +6,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
-// const session = require('express-session');
-// const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
-
-//console.log(stripeSecretKey, stripePublicKey);
-
+// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+// const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+// const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
@@ -24,7 +19,7 @@ const cartRouter = require('./routes/cart');
 const eventsRouter = require('./routes/events');
 const checkoutRouter = require('./routes/checkout');
 const searchRouter = require('./routes/search');
-const plantsRouter = require('./routes/plants');
+const hollisticRouter = require('./routes/hollistic');
 
 // const flash = require('express-flash');
 
@@ -82,14 +77,13 @@ app.use('/cart', cartRouter);
 app.use('/events', eventsRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/search', searchRouter);
-app.use('/plants', plantsRouter);
+app.use('/hollistic', hollisticRouter); 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
