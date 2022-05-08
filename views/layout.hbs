@@ -58,20 +58,21 @@
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li><a class="dropdown-item" href="/events">Events</a></li>
-                <li><a class="dropdown-item" href="/plants">Plant Care Guide</a></li>
+                <li><a class="dropdown-item" href="#">Plant Care Guide</a></li>
                 <li><a
                     class="dropdown-item"
                     href="/volunteer"
                   >Volunteer</a></li>
               </ul>
-            </li>
-            {{#if loggedIn}}
             <li class="nav-item">
-              {{#if isAdmin}}
+              <a class="nav-link" href="/hollistic">Hollistic</a>
+            </li>
+            </li>
+              {{#if loggedIn}}
+            <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add a product</a>
             </li>
-            {{/if}}
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>
