@@ -1,0 +1,30 @@
+
+  <body>
+
+    <div class="container" id="deleteArticle">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/hollistic/delete/{{article.id}}"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-3 text-danger">Are you sure you want to delete:</h3>
+              <h2 class="mb-3">{{article.title}}</h2>
+              <h2 class="mb-2">By: {{article.author}}</h2>
+                <div class="col-5 mb-2 mx-auto">
+                  <button class="btn btn-danger" style="align-items: center">Yes, delete forever!</button>
+                </div>
+              </div>
+            </form>
+            <p class="p-3">To view your current products, please click <a href="/hollistic">here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+
