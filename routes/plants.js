@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
   let plants = [];
   plants = await Plant.find({name: "CommonName"}).limit(4);
-  console.log(plants)
+  //console.log(plants.Duration)
   res.render("garden", { title: "Plants", plants, loggedIn, isAdmin });
 });
 

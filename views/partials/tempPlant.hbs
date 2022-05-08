@@ -1,21 +1,21 @@
 <div class="col-12 col-md-6 col-lg-4">
-
-<div class="card">
-  <img
-    src="plantImg.jpg"
-    alt="{{plant.CommonName}}"
-    class="card-img-top"
-  />
-  <div class="card-body">
-    <h5 class="card-title">{{plant.CommonName}}</h5>
-    <h6 class="sci-title">{{plant.ScientificName}}</h6>
-    <p class="card-text">Bloom Period: {{plant.BloomPeriod}}</p>
-    <p class="card-text">Percipitation Range: {{plant.Precipitation_Minimum}} - {{plant.Precipitation_Maximum}}</p>
-    <p class="card-text">{{product.productPrice}}</p>
-    <p class="card-text">{{product.productPrice}}</p>
+    <div class="card">
+        <img src="/public/images/plantImg.jpg" alt="{{plant.CommonName}}" class="card-img-top"/>
+    <div class="card-body">
+        <h5 class="card-title">{{plant.CommonName}}</h5>
+        <h6 class="sci-title">{{plant.ScientificName}}</h6>
+        <ul>
+            <li class="card-text">Percipitation Range: {{plant.Precipitation_Minimum}} - {{plant.Precipitation_Maximum}}</li>
+            <li class="card-text">Bloom Period: {{plant.BloomPeriod}}</li>
+            <li class="card-text">Life Cycle: {{plant.Duration}}</li>
+            <li class="card-text">Growth Rate: {{plant.GrowthRate}}</li>
+            <li class="card-text">Grows In: {{plant.State}}</li>
+            <li class="card-text">Shade Tolerance: {{plant.ShadeTolerance}}</li>
+            <li class="card-text">Reccommended Root Depth: {{plant.RootDepthMinimum}}</li>
+        </ul>
     </div>
     </div>
-
+</div>
 
 
     {{!-- {{plant.ScientificName}} {{plant.CommonName}} {{plant.State}} {{plant.Duration}} {{plant.GrowthRate}} {{plant.AdaptedCoarseSoils}} {{plant.AdaptedMediumSoils}} {{plant.AdaptedFineSoils}} {{plant.ShadeTolerance}} {{plant.RootDepthMinimum}} {{plant.Precipitation_Minimum}} {{plant.Precipitation_Maximum}} {{plant.BloomPeriod}} --}}
