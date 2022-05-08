@@ -58,20 +58,21 @@
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li><a class="dropdown-item" href="/events">Events</a></li>
-                <li><a class="dropdown-item" href="/plants">Plant Care Guide</a></li>
+                <li><a class="dropdown-item" href="#">Plant Care Guide</a></li>
                 <li><a
                     class="dropdown-item"
                     href="/volunteer"
                   >Volunteer</a></li>
               </ul>
-            </li>
-            {{#if loggedIn}}
             <li class="nav-item">
-              {{#if isAdmin}}
+              <a class="nav-link" href="/hollistic">Hollistic</a>
+            </li>
+            </li>
+              {{#if loggedIn}}
+            <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add a product</a>
             </li>
-            {{/if}}
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>
@@ -110,7 +111,7 @@
             </svg>
           </a>
           {{#if loggedIn}}
-          <a href="/users/profile" id="user-profile-avatar" class="d-flex text-center p-3 py-5"><img class="rounded-circle mt-5" width="20px" src="https://www.nicepng.com/png/detail/809-8097666_user-login-man-person-comments-icon.png"></a>
+          <a href="/users/profile" class="d-flex text-center p-3 py-5"><img class="rounded-circle mt-5" width="20px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"></a>
           {{/if}}
         </div>
         </div>
