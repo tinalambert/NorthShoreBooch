@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     }
     const articles = await Article.find({}).lean();
 
-    res.render('hollistic', {articles, loggedIn, isAdmin});;  
+    res.render('hollistic', {articles, isAdmin});  
 }); 
 
 router.post('/', async (req,res) => {
