@@ -2,11 +2,24 @@
 const express = require('express');
 const router = express.Router();
 const Article = require('../models/Article');
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 
 router.get('/', async (req, res) => {
+    let token;
+    let decoded;
+    let isAdmin;
+    let loggedIn = false;
+
+    if(req.cookies.loggedIn) {
+        loggedIn = true;
+        token = req.cookies.loggedIn;
+        decoded = jwt.verify(token, secret, {complete: true});
+        isAdmin = decoded.payload.isAdmin
+    }
     const articles = await Article.find({}).lean();
 
-    res.render('hollistic', {articles}); 
+    res.render('hollistic', {articles, loggedIn, isAdmin});;  
 }); 
 
 router.post('/', async (req,res) => {

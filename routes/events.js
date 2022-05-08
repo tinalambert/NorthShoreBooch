@@ -5,15 +5,21 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
 router.get('/', async function (req, res) {
-  // console.log('events is firing.');
+  let token;
+  let decoded;
+  let isAdmin;
+  
   let loggedIn = false;
   if (req.cookies.loggedIn) {
     loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
   }
 
   const events = await Event.find({}).lean().sort('date');
 
-  res.render('events', { events, loggedIn });
+  res.render('events', { events, loggedIn, isAdmin });
 });
 
 router.post('/', async (req, res) => {
@@ -83,3 +89,5 @@ router.post('/delete/:id', async(req, res) => {
 
   res.redirect('/events')
 })
+
+module.exports = router; 
