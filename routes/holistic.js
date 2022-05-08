@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     }
     const articles = await Article.find({}).lean();
 
-    res.render('hollistic', {articles, loggedIn, isAdmin});  
+    res.render('holistic', {articles, loggedIn, isAdmin});  
 }); 
 
 router.post('/', async (req,res) => {
@@ -37,17 +37,17 @@ router.post('/', async (req,res) => {
       if(err) {
         const error = newArticle.validateSync().errors;
         if(error.title) {
-            res.render('hollistic', {message: error.title.message});
+            res.render('holistic', {message: error.title.message});
         }
         if(error.author) {
-            res.render('hollistic', {message: error.author.message});
+            res.render('holistic', {message: error.author.message});
         }
         if(error.description) {
-            res.render('hollistic', {message: error.description.message});
+            res.render('holistic', {message: error.description.message});
         }
     } else {
             console.log('New Article saved!');
-            res.redirect('hollistic');
+            res.redirect('holistic');
         }         
     });
 });
@@ -68,7 +68,7 @@ router.get('/update/:id', async (req, res) => {
       } else {
         Article.findByIdAndUpdate(articleId, article).exec()
         console.log("Event successfully updated, check your DB!")
-        res.redirect('/hollistic'); 
+        res.redirect('/holistic'); 
       }
     })
   })
@@ -83,7 +83,7 @@ router.get('/update/:id', async (req, res) => {
     const articleId = req.params.id;
     const article = await Article.findByIdAndDelete(articleId);
   
-    res.redirect('/hollistic')
+    res.redirect('/holistic')
   })
 
 module.exports = router; 
