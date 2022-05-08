@@ -19,10 +19,10 @@ exports.getCart = async (req, res, next) => {
   
   const user = await User.findById(userId).populate("cart.items.productId").exec()
     .then((user) => {
-      console.log("user.cart.items is ", user.cart.items);
+      // console.log("user.cart.items is ", user.cart.items);
       const cartItems = user.cart.items;
-      // const quantity = user.cart.quantity;
-      // console.log("quantity is ", quantity)
+      const quantity = user.cart.quantity;
+      console.log("quantity is ", quantity)
 
       res.render("cart", {
         title: "I'm Boochy",
@@ -65,15 +65,18 @@ exports.postCart = async (req, res, next) => {
     });
 };
 
-exports.postCartDeleteProduct = (req, res, next) => {
+exports.postCartDeleteProduct = async (req, res, next) => {
+  const productId = req.params.id;
+  console.log(87657865765, productId)
   let token = req.cookies.loggedIn;
   let secret = process.env.JWT_SECRET;
   let decoded = jwt.verify(token, secret, { complete: true });
   let userId = decoded.payload.id;
-  
-  const productId = req.params.id;
-  req.user //always request a user first
-    .deleteItemFromCart(productId)
+
+  const user = await User.findById(userId);
+  console.log("cartController.js @ line 41...User is ", user);
+
+  user.deleteItemFromCart(productId)
     .then((result) => {
       res.redirect("/cart");
     })
@@ -83,34 +86,34 @@ exports.postCartDeleteProduct = (req, res, next) => {
     });
 };
 
-exports.postOrder = (req, res, next) => {
-  req.user
-    .populate("cart.items.productId")
-    .execPopulate()
-    .then((user) => {
-      console.log(user.cart.items);
+// exports.postOrder = (req, res, next) => {
+//   req.user
+//     .populate("cart.items.productId")
+//     .execPopulate()
+//     .then((user) => {
+//       console.log(user.cart.items);
 
-      const products = user.cart.items.map((i) => {
-        return { quantity: i.quantity, product: { ...i.productId._doc } };
-      });
+//       const products = user.cart.items.map((i) => {
+//         return { quantity: i.quantity, product: { ...i.productId._doc } };
+//       });
 
-      const order = new Order({
-        products: products,
-        user: {
-          name: req.user.name,
-          userId: req.user,
-        },
-      });
+//       const order = new Order({
+//         products: products,
+//         user: {
+//           name: req.user.name,
+//           userId: req.user,
+//         },
+//       });
 
-      return order.save();
-    })
-    .then((result) => {
-      return req.user.clearCart();
-    })
-    .then((result) => {
-      res.redirect("/orders");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+//       return order.save();
+//     })
+//     .then((result) => {
+//       return req.user.clearCart();
+//     })
+//     .then((result) => {
+//       res.redirect("/orders");
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
