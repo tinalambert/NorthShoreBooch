@@ -24,7 +24,7 @@ const userSchema = Schema({
     ],
   },
   isAdmin: { type: Boolean, default: false },
-  isVolunteer: { type: Boolean, default: false },
+  isVolunteer: { type: Boolean, default: false},
   avatar: String,
   phoneNumber: String,
   streetAddress: String,
@@ -32,6 +32,7 @@ const userSchema = Schema({
   city: String,
   state: String,
   country: String,
+  events: [{type: Schema.Types.ObjectId, ref: 'Event'}] 
 });
 
 userSchema.plugin(passportLocalmongoose);

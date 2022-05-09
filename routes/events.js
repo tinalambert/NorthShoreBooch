@@ -17,6 +17,10 @@ router.get('/', async function (req, res) {
   }
   const events = await Event.find({}).lean().sort('date');
 
+  events.forEach((event) => {
+    event.isAdmin = isAdmin;
+  })
+
   res.render('events', { events, loggedIn, isAdmin });
 });
 
