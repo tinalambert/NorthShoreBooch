@@ -8,7 +8,6 @@ router.get('/', async function (req, res) {
   let token;
   let decoded;
   let isAdmin;
-  
   let loggedIn = false;
   if (req.cookies.loggedIn) {
     loggedIn = true;
@@ -16,7 +15,6 @@ router.get('/', async function (req, res) {
     decoded = jwt.verify(token, secret, {complete: true});
     isAdmin = decoded.payload.isAdmin;
   }
-
   const events = await Event.find({}).lean().sort('date');
 
   res.render('events', { events, loggedIn, isAdmin });

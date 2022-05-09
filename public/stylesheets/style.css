@@ -229,3 +229,21 @@ input::web-kit-outer-spin-button
 ul {
   list-style-type: none;
 }
+
+#dltProduct {
+  opacity: 100%;
+}
+
+#dltProduct:hover {
+  color: red;
+  transform: scale(1.2)
+}
+
+#updateProduct {
+  background-image: url('../images/farmMountain.JPG');
+}
+
+.updateForm {
+  opacity: 82%;
+  margin-top: 2%;
+}
