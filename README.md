@@ -6,21 +6,19 @@ Web application/e-commerce site for a local company in North Shore Hawaii that i
 
 
 Getting Started
-Dependencies
-Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-ex. Windows 10
-Installing
-How/where to download your program
-Any modifications needed to be made to files/folders
-Executing program
-How to run the program
-Step-by-step bullets
-code blocks for commands
-Npm install - express generator,
+Dependencies:
+Mongoose
+Express
+Handlebars
+JSONWEBTOKEN
+Bcrypt
+Passport
+Passport-local
+Passport-local-mongoose
 
 CONFIGURATION
 -------------
- 
+
  * Configure the user permissions in Administration » People » Permissions:
 
    - Use the administration pages and help (System module)
