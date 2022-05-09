@@ -1,0 +1,23 @@
+
+
+
+<div class="col-12 col-md-6 col-lg-4">
+
+<div class="card">    
+  <img
+    src="{{event.imageUrl}}"
+    alt="{{event.event}}"
+    class="card-img-top"
+  />
+  <div class="card-body">
+    <h6 class="card-title">{{event.event}}</h6>
+    <p class="card-text">{{event.description}}</p>
+    <p class="card-text">{{event.date}}</p>
+  <button class="btn btn-success" action="/signUp" method="GET" type="button">Sign up!</button>
+{{#if event.isAdmin}}
+  <a class="btn btn-success" type="submit" href="/events/delete/{{event._id}}">Delete</a>
+  <a class="btn btn-success" type="submit" href="/events/update/{{event._id}}">Update</a>
+{{/if}}
+</div>
+</div>
+</div>

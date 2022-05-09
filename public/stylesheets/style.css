@@ -226,6 +226,10 @@ input::web-kit-outer-spin-button
   margin-top: 2%;
 }
 
+#staffImg {
+  height: 50px;
+  width: 50px;
+}
 #dltProduct {
   opacity: 100%;
 }

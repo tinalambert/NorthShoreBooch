@@ -1,0 +1,45 @@
+<body>
+    <div class="container">
+
+    <form action="/admin/search" method="GET">
+            <input
+              type="text"
+              placeholder="Search"
+              class="search"
+              name="search"
+              aria-label="search"
+            />
+            <input id="searchBtn" class="btn btn-success" type="submit" value="search" />
+          </form>
+    </div>
+    {{#if users}}
+<div>
+    <div class="container">
+    {{#each users}}
+    {{> userCard user=this}}
+    {{/each}}
+    </div>
+</div>
+{{else}}
+<div>
+    <h2>STAFF</h2>
+    <div class="container">
+
+    {{#each staff}}
+    {{> userCard user=this}}
+    {{/each}}
+    </div>
+</div>
+<div>
+    <h2>VOLUNTEERS</h2>
+    <div class="container">
+
+    {{#each volunteers}}
+    {{> userCard user=this}}
+    {{/each}}
+    </div>
+</div>
+{{/if}}
+
+
+</body>

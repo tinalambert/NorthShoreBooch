@@ -35,7 +35,6 @@ router.post('/', async (req, res) => {
       lastName: lastName,
       username: username,
       email: email,
-      isVolunteer: true,
       phoneNumber: phoneNumber,
     });
 

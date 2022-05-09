@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Plant = require("../models/Plant");
-const jwt = require("jsonwebtoken");
+const Plant = require('../models/Plant');
+const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   //const { ScientificName, CommonName, State, Duration, GrowthRate, AdaptedCoarseSoils, AdaptedMediumSoils, AdaptedFineSoils, ShadeTolerance, RootDepthMinimum, Precipitation_Minimum, Precipitation_Maximum, BloomPeriod } = req.body
   let token;
   let decoded;
@@ -18,9 +18,8 @@ router.get("/", async (req, res) => {
   }
 
   let plants = [];
-  plants = await Plant.find({name: "CommonName"}).limit(4);
-  console.log(plants)
-  res.render("garden", { title: "Plants", plants, loggedIn, isAdmin });
+  plants = await Plant.find({ name: 'CommonName' }).limit(4);
+  res.render('garden', { title: 'Plants', plants, loggedIn, isAdmin });
 });
 
 module.exports = router;
