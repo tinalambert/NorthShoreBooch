@@ -247,3 +247,11 @@ ul {
   opacity: 82%;
   margin-top: 2%;
 }
+
+#plantBody {
+  background-color: #DFEACD;
+}
+
+#plantCard {
+  display: flex;
+}

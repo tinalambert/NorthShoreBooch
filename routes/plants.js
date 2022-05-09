@@ -19,16 +19,12 @@ router.get("/", async (req, res) => {
 
   let plants = [];
   
-  let perPage = 15 
-  let page = Math.max(0, req.params.page)
-  
-  plants = await Plant.find({ name: "CommonName" }).limit(perPage)
-  .skip(perPage * page)
-  .sort({
-      name: 'asc'
+  plants = await Plant.find({ CommonName: ["Lavender", "Hemp", "Lemongrass", "Kalo (Taro)", "Noni", "Banana", "Papaya", "Peppermint", "lilikoi (Passion Fruit) ", "Tulsi (Holy Basil)", "Moringa", "Olena (Hawaiian Turmeric)", "Kaukani (Hawaiian ginger)" ] })
+  //console.log(plants)
+  plants.forEach((plant) => {
+    plant.isAdmin = isAdmin;
   })
-  //console.log(plants.Duration)
-  res.render("plants", { title: "Plants", plants, loggedIn, isAdmin });
+  res.render("plants", { title: "Plant Care Guide", plants, loggedIn, isAdmin });
 });
 
 router.post('/', async (req, res) => {

@@ -1,5 +1,4 @@
-<body>
-
+<body id="plantBody">
 <div class="masthead"
         style="background-image: url('https://images.pexels.com/photos/1141792/pexels-photo-1141792.jpeg');" >
         <div class="color-overlay d-flex justify-content-center align-items-center">
@@ -9,18 +8,19 @@
          </div>
       </div>
    </div>
-
+<div class="container-fluid float-end">
 <form action="/search" method="GET">
             <input
               type="text"
               placeholder="Search for a Plant by Common Name"
-              class="searchPlants"
-              name="searchPlants"
+              class="search mx-auto"
+              name="search"
               aria-label="search"
             />
             <input id="searchBtn" class="btn btn-success" type="submit" value="Search" />
           </form>
-
+</div>
+          {{#if isAdmin}}
 <div class="col-md-6 offset-md-3">
           <div class="form">
             <form
@@ -121,14 +121,13 @@
                 </div>
                 <div class="col-md-12">
                   <button class="btn btn-success float-end" type="submit">Add to Plant Database</button>
-                  <button class="btn btn-outline-success" href="update/{{plants.CommonName}}">Update a Plant</a>
-                  <button type="button" class="btn btn-outline-danger" href="delete/{{plants.CommonName}}">Delete a Plant</button>
                 </div>
               </div>
             </form>
           </div>
+          {{/if}}
         </div>
-
+</div>
       <div class="container">
             <div class="row g-3">
                   {{#each plants}}
