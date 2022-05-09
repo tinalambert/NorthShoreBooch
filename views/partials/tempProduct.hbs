@@ -1,4 +1,3 @@
-
 <div class="col-12 col-md-6 col-lg-4">
 
 <div class="card">
@@ -15,10 +14,12 @@
   <form action="/cart/{{product._id}}" method="POST">
     <button class="btn btn-success" name="{{product.productName}}" value="{{product._id}}" type="submit">Add to cart</button>
   </form>
+  <br>
 
+{{#if product.isAdmin}}
   <a class="btn btn-success" type="submit" href="/products/update/{{product._id}}">Update</a>
   <a class="btn btn-success" type="submit" href="/products/delete/{{product._id}}">Delete</a>
+  {{/if}}
   </div>
 </div>
 </div>
-

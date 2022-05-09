@@ -12,30 +12,52 @@ router.get('/', async (req, res) => {
   if (req.cookies.loggedIn) {
     loggedIn = true;
     token = req.cookies.loggedIn;
-    decoded = jwt.verify(token, secret, { complete: true });
+    decoded = jwt.verify(token, secret, {complete: true});
     isAdmin = decoded.payload.isAdmin;
   }
-  let products = [];
-  products = await Product.find();
+  const products = await Product.find()
+    products.forEach((product) => {
+      // console.log(8888, product.isAdmin)
+      product.isAdmin = isAdmin
+    })
+    res.render('products', { title: 'Products', products, loggedIn, isAdmin });
   //console.log(products)
-  res.render('products', { title: 'Products', products, loggedIn, isAdmin });
 });
 
 router.get('/update/:id', async (req, res) => {
+  let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, { complete: true });
+    isAdmin = decoded.payload.isAdmin;
+  }
   // console.log(req.params)
   const product = await Product.findById(req.params.id);
-  res.render('updateProduct', { title: 'Update Product', product });
+  res.render('updateProduct', { title: 'Update Product', product, loggedIn, isAdmin });
 });
 
 router.post('/update/:id', async (req, res) => {
   let productId = req.params.id;
   let product = await Product.findById(productId, req.body);
 
-  await product.save((err) => {
+  product.save((err) => {
     if (err) {
-      console.log(err);
+      const error = product.validateSync().errors;
+      if (error.productName) {
+        return res.render("updateProduct", {product, message: error.productName.message})
+      } if (error.desciption) {
+        return res.render("updateProduct", {product, message: error.desciption.message})
+      } if (error.productPrice) {
+        return res.render("updateProduct", {product, message: error.productPrice.message})
+      } if (error.imageUrl) {
+        return res.redirect("updateProduct", {product, message: error.imageUrl.message})
+      }
     } else {
-      Product.findByIdAndUpdate(productId, product).exec();
+      Product.findByIdAndUpdate(productId, req.body).exec();
       console.log('Product successfully updated, check your db');
       res.redirect('/products');
     }
@@ -49,7 +71,7 @@ router.get('/delete/:id', async (req, res) => {
 
 router.post('/delete/:id', async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
-  console.log('Product deleted, check your db');
+  // console.log('Product deleted, check your db');
   res.redirect('/products');
 });
 

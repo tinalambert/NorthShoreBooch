@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Plant = require("../models/Plant");
-const jwt = require("jsonwebtoken");
+const Plant = require('../models/Plant');
+const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   //const { ScientificName, CommonName, State, Duration, GrowthRate, AdaptedCoarseSoils, AdaptedMediumSoils, AdaptedFineSoils, ShadeTolerance, RootDepthMinimum, Precipitation_Minimum, Precipitation_Maximum, BloomPeriod } = req.body
   let token;
   let decoded;

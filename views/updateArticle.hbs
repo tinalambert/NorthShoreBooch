@@ -55,6 +55,11 @@
                 <div class="mb-3 col-md-6">
                   <label for="imageUrl" class="form-label">Attach Image</label>
                   <input type="imageUrl" name="imageUrl" id="imageUrl" value="{{article.imageUrl}}"/>
+                  <img
+                  src={{article.imageUrl}}
+                  alt="{{article.title}}"
+                  class="img-thumbnail"
+                />
                 </div>
                 <div class="col-md-12">
                   <button class="btn btn-success float-end" type="submit">Add to Library</button>
@@ -62,4 +67,5 @@
               </div>
             </form>
           </div>
+        <a href="/holistic">Click to return to Holistic page</a>
         </div>

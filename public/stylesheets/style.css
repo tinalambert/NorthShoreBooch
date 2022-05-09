@@ -14,7 +14,7 @@
 
 .masthead {
   background-size: cover;
-  min-height:50vh;
+  min-height:40vh;
   position: relative;
   color: white;
 }
@@ -47,28 +47,28 @@ input:valid {
   
 }
 
-.loginBody {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmy7MVX-gvv1didbV6d5ET7fBBXBdq2ryrOw&usqp=CAU");
-  background-repeat: no-repeat;
+#loginBody {
+  background-image: url("../images/IMG_0754.jpg");
+  /* background-repeat: no-repeat; */
   background-size: cover;
+  min-height: 100vh;
   
   text-align: center;
- 
-  color: darkgreen;
 
 }
-.registerBody {
+#registerBody {
   background-image: url("https://image.rakuten.co.jp/heath-industrial/cabinet/benefit/st244_2.jpg");
 
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 80vh;
   
   text-align: center;
-  color: white;
+  color: black;
 }
-#registerForm {
+/* #registerForm {
   display: inline-block;
-}
+} */
 
 .grow {
   transition: all .2s ease-in-out;
@@ -77,8 +77,8 @@ input:valid {
   transform: scale(1.1);
 }
 
-div#addProduct {
-  background-image: src="https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+#addProduct {
+  background-image: url("https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
 }
 
 .volunteerBody {
@@ -230,6 +230,11 @@ ul {
   list-style-type: none;
 }
 
+#staffImg {
+  height: 50px;
+  width: 50px;
+}
+
 #dltProduct {
   opacity: 100%;
 }
@@ -254,4 +259,10 @@ ul {
 
 #plantCard {
   display: flex;
+}
+
+#error-message {
+  background-color: rgb(244, 89, 71);
+  color: white;
+  
 }

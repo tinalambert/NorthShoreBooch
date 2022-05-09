@@ -1,8 +1,66 @@
 
+<body>
+
+  <div class="container-fluid" id="loginBody">
+    <div class="row updateForm">
+
+      <div class="col-md-6 offset-md-3">
+        <div class="form">
+          <form
+            action="/users/login"
+            method="POST"
+            class="mt-4 border p-3 bg-light shadow"
+          >
+        {{#if message}}
+            <div id="error-message">
+              <p>{{message}}</p>
+                </div>
+          {{/if}}
+          <br>
+            <h3 class="mb-5 text-secondary">Login</h3>
+            <div class="row">
+              <div class="mb-3 col-md-12">
+                <label>Username*</label>
+                <input
+                  type="text"
+                  name="username"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3 col-md-12">
+                <label>Password*</label>
+                <input
+                  type="text"
+                  name="password"
+                  class="form-control"
+                  required
+                ></input>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-success">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+
+{{!-- OLD TEMPLATE --}}
+
+{{!-- 
 
   <body class="loginBody">
     <div class='container-fluid'>
       <main>
+        {{#if message}}
+        <div class="col-md-4 message-div">{{message}}</div>
+        {{/if}}
         <h1 style="text-align: center">Login Form</h1>
         <div id="loginForm" class='form' >
           <form action='/users/login' method='POST'>
@@ -21,4 +79,4 @@
       </main>
     </div>
   </body>
-
+ --}}

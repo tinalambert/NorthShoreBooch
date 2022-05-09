@@ -19,6 +19,11 @@ router.get('/', async (req, res) => {
     }
     const articles = await Article.find({}).lean();
 
+    articles.forEach((article) => {
+      article.isAdmin = isAdmin;
+    })
+    //console.log(articles)
+
     res.render('holistic', {articles, loggedIn, isAdmin});  
 }); 
 

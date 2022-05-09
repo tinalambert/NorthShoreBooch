@@ -1,14 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/stylesheets/style.css"/>
 
+   <title>North Shore Booch</title>
+</head>
 <body class="eventBody">
-   <div class="masthead"
+      <div class="masthead"
         style="background-image: url('https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');" >
         <div class="color-overlay d-flex justify-content-center align-items-center">
             <div class="singleCol container text-center">
-               <h1>Visit our community owned and managed farm.</h1>
-               <p>Check out the all the wonderful events we provide for our community!</p>        
+        <h1>Visit our family-owned Kombucha farm in North Shore Hawaii</h1>
+               <p>Find out how to get involved.</p>        
          </div>
       </div>
-   </div>
 {{#if isAdmin}}
 <div class="container" id="addBox">
       <div class="row">
@@ -71,11 +79,6 @@
             <div class="row g-3">
               {{#each events}}
                 {{> tempEvents event=this}}
-  {{#if isAdmin}}
-  <a class="btn btn-success" type="submit" href="/events/delete/{{event._id}}">Delete</a>
-  <br>
-  <a class="btn btn-success" type="submit" href="/events/update/{{event._id}}">Update</a>
-  {{/if}}
               {{/each}}
           </div>
             </div> 
@@ -86,3 +89,4 @@
     </div>
     {{/if}}
 </body>
+</html>

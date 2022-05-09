@@ -1,10 +1,14 @@
 
   <body>
-
     <div class="container" id="addProduct">
-      <div class="row">
+      <div class="row updateForm">
 
         <div class="col-md-6 offset-md-3">
+{{#if message}} 
+            <div id="error-message">
+              <p style="align-items: center">{{message}}</p>
+              </div>
+            {{/if}}
           <div class="form">
             <form
               action="/products/add"
@@ -33,7 +37,7 @@
                   ></textarea>
                 </div>
                 <div class="mb-3 col-md-12">
-                  <label>Price*</label>
+                  <label for="productPrice">Price*</label>
                   <input
                     type="text"
                     name="productPrice"
@@ -42,15 +46,15 @@
                   />
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="image">ImageUrl</label>
-                  <input type="text" id="image" name="imageUrl" required/>
+                  <label for="imageUrl">ImageUrl</label>
+                  <input type="text" id="imageUrl" name="imageUrl" required/>
                 </div>
                 <div class="col-md-12">
                   <button class="btn btn-success float-end">Add Product</button>
                 </div>
               </div>
-            </form>
             <p class="p-3">To view your current products, please click <a href="/products">here</a></p>
+            </form>
           </div>
         </div>
       </div>
