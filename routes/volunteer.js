@@ -28,32 +28,24 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { firstName, lastName, userName, email, phoneNumber, task } = req.body;
-  // console.log(req.body);
-  // console.log(firstName, lastName, email, phoneNumber, task);
-
-  const uVolunteer = await User.findOne({ userName: userName });
-
-  if (uVolunteer) {
-    return res.render('register', { message: 'Email has already been used!' });
-  } else {
-    console.log('volunteer created!');
-
+  const { firstName, lastName, username, email, phoneNumber, task } = req.body;
+ 
     const newVolunteer = new User({
       firstName: firstName,
       lastName: lastName,
-      userName: userName,
+      username: username,
       email: email,
-      phoneNumber: phoneNumber,
-      task: task,
       isVolunteer: true,
+      phoneNumber: phoneNumber,
     });
-      console.log(newVolunteer);
 
-    await newVolunteer.save(() => {
-    res.redirect('/')  
+    await newVolunteer.save((err) => {
+      if(err) {
+        res.render('error', {message: err} )
+      } else {
+        res.redirect('/')  
+      }
     });
-  }
 });
 
 module.exports = router;
