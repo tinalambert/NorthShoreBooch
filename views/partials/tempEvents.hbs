@@ -12,14 +12,10 @@
     <p class="card-text">{{event.description}}</p>
     <p class="card-text">{{event.date}}</p>
   <button class="btn btn-success" action="/signUp" method="GET" type="button">Sign up!</button>
-  <br>
-  <br>
-  {{!-- {{#if loggedIn}}
-  {{#if isAdmin}} --}}
+{{#if event.isAdmin}}
   <a class="btn btn-success" type="submit" href="/events/delete/{{event._id}}">Delete</a>
   <a class="btn btn-success" type="submit" href="/events/update/{{event._id}}">Update</a>
-  {{!-- {{/if}}
-  {{/if}} --}}
+{{/if}}
 </div>
 </div>
 </div>

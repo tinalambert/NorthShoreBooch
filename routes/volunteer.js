@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Volunteer = require('../models/Volunteer');
+const User = require('../models/User'); 
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
@@ -27,41 +28,30 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { firstName, lastName, email, phoneNumber, task } = req.body;
-  console.log(req.body);
-  console.log(firstName, lastName, email, phoneNumber, task);
+  const { firstName, lastName, userName, email, phoneNumber, task } = req.body;
+  // console.log(req.body);
+  // console.log(firstName, lastName, email, phoneNumber, task);
 
-  const uVolunteer = await Volunteer.findOne({ email: email });
+  const uVolunteer = await User.findOne({ userName: userName });
 
   if (uVolunteer) {
     return res.render('register', { message: 'Email has already been used!' });
   } else {
     console.log('volunteer created!');
 
-    const newVolunteer = new Volunteer({
+    const newVolunteer = new User({
       firstName: firstName,
       lastName: lastName,
+      userName: userName,
       email: email,
       phoneNumber: phoneNumber,
       task: task,
+      isVolunteer: true,
     });
+      console.log(newVolunteer);
 
-    await newVolunteer.save((err) => {
-      if (err) {
-        const error = newVolunteer.validateSync().errors;
-        if (error.firstName) {
-          return res.render('volunteer', { message: error.firstName.message });
-        }
-        if (error.lastName) {
-          return res.render('volunteer', { message: error.lastName.message });
-        }
-        if (error.email) {
-          return res.render('volunteer', { message: error.email.message });
-        }
-      } else {
-        console.log('Volunteer saved, check DB!');
-        res.redirect('/');
-      }
+    await newVolunteer.save(() => {
+    res.redirect('/')  
     });
   }
 });

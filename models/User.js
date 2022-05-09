@@ -31,6 +31,8 @@ const userSchema = Schema({
   city: String,
   state: String,
   country: String,
+  isVolunteer: { type: Boolean, default: false},
+  task: String
 });
 
 userSchema.plugin(passportLocalmongoose);

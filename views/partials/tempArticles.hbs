@@ -12,9 +12,10 @@
     <p>Full article:</p>
     <a href="{{article.link}}">{{article.link}}</a>
     <br>
-
+    {{#if article.isAdmin}}
     <a class="btn btn-success" type="submit" href="/holistic/delete/{{article._id}}">Delete</a>
     <a class="btn btn-success" type="submit" href="/holistic/update/{{article._id}}">Update</a>
+    {{/if}}
 </div>
 </div>
 </div>
