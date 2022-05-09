@@ -35,11 +35,12 @@ const userSchema = Schema({
 });
 
 userSchema.plugin(passportLocalmongoose);
+
 userSchema.methods.addToCart = async function (product) {
-  let count = 0;
+  // const count = 0;
 
   const cartProductIndex = this.cart.items.findIndex((cart) => {
-    console.log('cart product is ', cart);
+    // console.log("cart product is ", cart);
     return cart.productId.toString() === product._id.toString();
   });
   let newQuantity = 1;
@@ -55,14 +56,29 @@ userSchema.methods.addToCart = async function (product) {
 
   const updatedCart = { items: cartItems };
 
-  cartItems.forEach((item) => {
-    count++;
-  });
+  // cartItems.forEach((item) => {
+  //   count++;
+  // });
 
-  console.log('count is ', count);
+  // console.log("count is ", count);
 
   this.cart = updatedCart;
   return this.save();
 };
+
+userSchema.methods.deleteItemFromCart = function (product) {
+  const updatedCartItems = this.cart.items.filter((cart) => {
+    // console.log(12345, cart.productId)
+    // console.log(8888888, cart._id)
+    return cart._id.toString() !== product;
+  });
+  this.cart.items = updatedCartItems;
+  // console.log("updated cart items are ", updatedCartItems)
+  return this.save();
+};
+// userSchema.methods.clearCart = function(){
+//   this.cart = {items : []};
+//   return this.save();
+// }
 
 module.exports = mongoose.model('User', userSchema);

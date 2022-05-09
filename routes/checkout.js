@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
-const Cart = require('../models/Cart');
+// const Cart = require('../models/Cart');
 const User = require('../models/User')
 const mongoose = require("mongoose");
 

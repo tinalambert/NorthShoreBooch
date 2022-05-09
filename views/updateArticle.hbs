@@ -1,0 +1,65 @@
+           <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/holistic/update/{{article.id}}"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Update Article</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Article Title*</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value="{{article.title}}"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Author*</label>
+                  <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    value="{{article.author}}"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    value="{{article.description}}"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></input>
+                </div>
+               <div class="mb-3 col-md-12">
+                  <label>Link*</label>
+                  <input
+                    type="text"
+                    id="link"
+                    name="link"
+                    value="{{article.link}}"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <input type="imageUrl" name="imageUrl" id="imageUrl" value="{{article.imageUrl}}"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Add to Library</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>

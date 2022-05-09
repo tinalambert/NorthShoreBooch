@@ -64,17 +64,19 @@
                     href="/volunteer"
                   >Volunteer</a></li>
               </ul>
-            </li>
-            {{#if loggedIn}}
             <li class="nav-item">
-              {{#if isAdmin}}
+              <a class="nav-link" href="/holistic">Holistic</a>
+            </li>
+            </li>
+              {{#if loggedIn}}
+            <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add a product</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin">Staff and volunteers</a>
             </li>
-            {{/if}}
+           
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>
@@ -85,6 +87,7 @@
               <a class="nav-link" href="/users/login">Login</a>
             </li>
 {{/if}}
+</div>
       
 
           <form action="/search" method="GET">
@@ -113,7 +116,7 @@
             </svg>
           </a>
           {{#if loggedIn}}
-          <a href="/users/profile" id="user-profile-avatar" class="d-flex text-center p-3 py-5"><img class="rounded-circle mt-5" width="20px" src="https://www.nicepng.com/png/detail/809-8097666_user-login-man-person-comments-icon.png"></a>
+          <a href="/users/profile" id="user-profile-avatar" class="d-flex text-center p-3 py-5"><img class="rounded-circle mx-auto" width="20px" src="https://www.nicepng.com/png/detail/809-8097666_user-login-man-person-comments-icon.png"></a>
           {{/if}}
         </div>
         </div>

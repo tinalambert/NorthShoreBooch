@@ -4,49 +4,45 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="/stylesheets/style.css"/>
-
-   <title>North Shore Booch</title>
+   <title>Hollistic Living</title>
 </head>
-<body class="eventBody">
-   <div class="masthead"
-        style="background-image: url('https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');" >
+<body id="hollisticBody">
+
+      <div class="masthead"
+        style="background-image: url('https://images.pexels.com/photos/1028600/pexels-photo-1028600.jpeg');" >
         <div class="color-overlay d-flex justify-content-center align-items-center">
             <div class="singleCol container text-center">
-               <h1>Visit our community owned and managed farm.</h1>
-               <p>Check out the all the wonderful events we provide for our community!</p>        
+               <h1>Learn about the science, and art of Hollistic living!</h1>
+               <p>Real change comes by empowering the mind, body, and spirit.</p>        
          </div>
       </div>
    </div>
-{{#if isAdmin}}
-<div class="container" id="addBox">
-      <div class="row">
-
-        <div class="col-md-6 offset-md-3">
+   <br>
+           <div class="col-md-6 offset-md-3">
           <div class="form">
             <form
-              action="/events"
+              action="/hollistic"
               method="POST"
               class="mt-4 border p-3 bg-light shadow"
             >
-              <h3 class="mb-5 text-secondary">Add event</h3>
+              <h3 class="mb-5 text-secondary">Add Article</h3>
               <div class="row">
                 <div class="mb-3 col-md-12">
-                  <label>Event Name*</label>
+                  <label>Article Title*</label>
                   <input
                     type="text"
-                    id="event"
-                    name="event"
+                    id="title"
+                    name="title"
                     class="form-control"
                     required
                   />
                 </div>
                 <div class="mb-3 col-md-12">
-                  <label>Event Date*</label>
+                  <label>Author*</label>
                   <input
                     type="text"
-                    id="date"
-                    name="date"
+                    id="author"
+                    name="author"
                     class="form-control"
                     required
                   />
@@ -55,44 +51,42 @@
                   <label>Description*</label>
                   <textarea
                     type="text"
+                    id="description"
                     name="description"
                     class="form-control"
                     rows="3"
                     required
                   ></textarea>
                 </div>
+               <div class="mb-3 col-md-12">
+                  <label>Link*</label>
+                  <input
+                    type="text"
+                    id="link"
+                    name="link"
+                    class="form-control"
+                    required
+                  />
+                </div>
                 <div class="mb-3 col-md-6">
                   <label for="imageUrl" class="form-label">Attach Image</label>
                   <input type="imageUrl" name="imageUrl" id="imageUrl"/>
                 </div>
                 <div class="col-md-12">
-                  <button class="btn btn-success float-end" type="submit">Add to Calendar</button>
+                  <button class="btn btn-success float-end" type="submit">Add to Library</button>
                 </div>
               </div>
             </form>
-            {{/if}}
           </div>
         </div>
+   <br> 
+   <div class="container">
+      <div class="row g-3">
+            {{#each articles}}
+            {{> tempArticles article=this}}
+            {{/each}}
+         </div>
       </div>
-    </div>
-
-          <div class="container">
-            <div class="row g-3">
-              {{#each events}}
-                {{> tempEvents event=this}}
-  {{#if isAdmin}}
-  <a class="btn btn-success" type="submit" href="/events/delete/{{event._id}}">Delete</a>
-  <br>
-  <a class="btn btn-success" type="submit" href="/events/update/{{event._id}}">Update</a>
-  {{/if}}
-              {{/each}}
-          </div>
-            </div> 
-
-    {{#if message}}
-    <div>
-      {{message}}
-    </div>
-    {{/if}}
+   </div>
 </body>
 </html>
