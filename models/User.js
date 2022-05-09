@@ -12,8 +12,28 @@ const userSchema = Schema({
     unique: true,
     trim: true,
   },
-  email: String,
-  password: String,
+  email: {
+    type: String,
+    validate: {
+      validator: (email) => {
+        const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+        const match = regex.test(email)
+        return match
+      },
+      message: "Please enter a valid email address"
+    },
+  },
+  password: {
+    type: String,
+    validate: {
+      validator: (password) => {
+        const regex = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/
+        const match = regex.test(password)
+        return match
+      },
+      message: "Passwords must be min 8 chars * Have one number & special character * Include one upper and lower case letter",
+    },
+  }, 
 
   cart: {
     items: [

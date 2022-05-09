@@ -21,8 +21,10 @@ exports.getCart = async (req, res, next) => {
     .then((user) => {
       // console.log("user.cart.items is ", user.cart.items);
       const cartItems = user.cart.items;
-      const quantity = user.cart.quantity;
-      console.log("quantity is ", quantity)
+
+      // NOT WORKING //
+      // const quantity = user.cart.quantity;
+      // console.log("quantity is ", quantity)
 
       res.render("cart", {
         title: "I'm Boochy",
@@ -44,23 +46,29 @@ exports.postCart = async (req, res, next) => {
   const productId = req.params.id;
   let token = req.cookies.loggedIn;
   let secret = process.env.JWT_SECRET;
-  let decoded = jwt.verify(token, secret, { complete: true });
-  let userId = decoded.payload.id;
+  let decoded;
+  let userId;
+
+  if (token) {
+    decoded = jwt.verify(token, secret, { complete: true });
+    userId = decoded.payload.id;
+  } if (!token) {
+    res.render("login", {message: "Please login to add products to your cart"})
+  }
 
   const user = await User.findById(userId);
-  console.log("cartController.js @ line 41...User is ", user);
+  // console.log("cartController.js @ line 41...User is ", user);
 
   const product = await Product.findById(productId);
-  console.log("cartController.js @ line 44, Product is...", product);
+  // console.log("cartController.js @ line 44, Product is...", product);
 
   Product.findById(productId)
     .then((product) => {
-      console.log("add to cart product is ", product);
+      // console.log("add to cart product is ", product);
 
       return user.addToCart(product);
     })
     .then((result) => {
-      console.log(result);
       res.redirect("/products");
     });
 };
