@@ -1,0 +1,140 @@
+<body>
+
+<div class="masthead"
+        style="background-image: url('https://images.pexels.com/photos/1141792/pexels-photo-1141792.jpeg');" >
+        <div class="color-overlay d-flex justify-content-center align-items-center">
+            <div class="singleCol container text-center">
+               <h1>Discover the origins of the ingredients that make our kombucha SUPERfood!</h1>
+               <p>It all begind in our bountiful Aina.</p>        
+         </div>
+      </div>
+   </div>
+
+<form action="/search" method="GET">
+            <input
+              type="text"
+              placeholder="Search for a Plant by Common Name"
+              class="searchPlants"
+              name="searchPlants"
+              aria-label="search"
+            />
+            <input id="searchBtn" class="btn btn-success" type="submit" value="Search" />
+          </form>
+
+<div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/plants"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Add a Plant</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Common Name*</label>
+                  <input
+                    type="text"
+                    id="CommonName"
+                    name="CommonName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Scientific Name*</label>
+                  <input
+                    type="text"
+                    id="ScientificName"
+                    name="ScientificName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Precipitation Maximum</label>
+                  <textarea
+                    type="text"
+                    id="Precipitation_Maximum"
+                    name="Precipitation_Maximum"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Precipitation Minimum</label>
+                  <textarea
+                    type="text"
+                    id="Precipitation_Minimum"
+                    name="Precipitation_Minimum"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
+                </div>
+               <div class="mb-3 col-md-12">
+                  <label>Bloom Period</label>
+                  <input
+                    type="text"
+                    id="BloomPeriod"
+                    name="BloomPeriod"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Life Cycle</label>
+                  <input
+                    type="text"
+                    id="Duration"
+                    name="Duration"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Growth Rate</label>
+                  <input
+                    type="text"
+                    id="GrowthRate"
+                    name="GrowthRate"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Shade Tolerance</label>
+                  <input
+                    type="text"
+                    id="ShadeTolerance"
+                    name="ShadeTolerance"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Root Depth</label>
+                  <input
+                    type="text"
+                    id="RootDepthMinimum"
+                    name="RootDepthMinimum"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <input type="imageUrl" name="imageUrl" id="imageUrl"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Add to Plant Database</button>
+                  <button class="btn btn-outline-success" href="update/{{plants.CommonName}}">Update a Plant</a>
+                  <button type="button" class="btn btn-outline-danger" href="delete/{{plants.CommonName}}">Delete a Plant</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      <div class="container">
+            <div class="row g-3">
+                  {{#each plants}}
+                  {{> tempPlant plant=this}}
+                  {{/each}}
+            </div>
+      </div>
+    
+</body>

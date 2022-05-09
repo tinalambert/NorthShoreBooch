@@ -18,9 +18,62 @@ router.get("/", async (req, res) => {
   }
 
   let plants = [];
-  plants = await Plant.find({name: "CommonName"}).limit(4);
+  
+  let perPage = 15 
+  let page = Math.max(0, req.params.page)
+  
+  plants = await Plant.find({ name: "CommonName" }).limit(perPage)
+  .skip(perPage * page)
+  .sort({
+      name: 'asc'
+  })
   //console.log(plants.Duration)
-  res.render("garden", { title: "Plants", plants, loggedIn, isAdmin });
+  res.render("plants", { title: "Plants", plants, loggedIn, isAdmin });
 });
+
+router.post('/', async (req, res) => {
+  const { ScientificName, CommonName, State, Duration, GrowthRate, AdaptedCoarseSoils, AdaptedMediumSoils, AdaptedFineSoils, ShadeTolerance, RootDepthMinimum, Precipitation_Minimum, Precipitation_Maximum, BloomPeriod, imageUrl } = req.body;
+
+  const newPlant = new Plant({
+    ScientificName: ScientificName, 
+    CommonName: CommonName, 
+    State: State, 
+    Duration: Duration, 
+    GrowthRate: GrowthRate, 
+    AdaptedCoarseSoils: AdaptedCoarseSoils, 
+    AdaptedMediumSoils: AdaptedMediumSoils, 
+    AdaptedFineSoils: AdaptedFineSoils, 
+    ShadeTolerance: ShadeTolerance, 
+    RootDepthMinimum: RootDepthMinimum, 
+    Precipitation_Minimum: Precipitation_Minimum, 
+    Precipitation_Maximum: Precipitation_Maximum, 
+    BloomPeriod: BloomPeriod, 
+    imageUrl: imageUrl,
+  });
+
+  await newPlant.save((err) => {
+    if(err) {
+      const error = newPlant.validateSync().errors;
+        if(error.CommonName) {
+            res.render('plants', {message: error.CommonName.message});
+        }
+        if(error.ScientificName) {
+            res.render('plants', {message: error.ScientificName.message});
+        }
+    } else {
+            console.log('New Plant added to database.');
+            res.redirect('plants');
+        }         
+    });
+  });
+
+  /////// Adding Update Plant Functionality /////////
+router.post('/plant', async (req, res) => {
+    let info = req.body;
+    let id = req.params.id;
+    await Plant.findByIdAndUpdate(id, info);
+    res.redirect('/plants/');
+  });
+  
 
 module.exports = router;
