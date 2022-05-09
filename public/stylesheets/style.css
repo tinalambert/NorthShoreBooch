@@ -226,10 +226,15 @@ input::web-kit-outer-spin-button
   margin-top: 2%;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #staffImg {
   height: 50px;
   width: 50px;
 }
+
 #dltProduct {
   opacity: 100%;
 }
@@ -246,6 +251,14 @@ input::web-kit-outer-spin-button
 .updateForm {
   opacity: 82%;
   margin-top: 2%;
+}
+
+#plantBody {
+  background-color: #DFEACD;
+}
+
+#plantCard {
+  display: flex;
 }
 
 #error-message {

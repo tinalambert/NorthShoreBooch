@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     articles.forEach((article) => {
       article.isAdmin = isAdmin;
     })
-    console.log(articles)
+    //console.log(articles)
 
     res.render('holistic', {articles, loggedIn, isAdmin});  
 }); 
