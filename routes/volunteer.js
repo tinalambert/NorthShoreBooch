@@ -28,8 +28,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { firstName, lastName, email, phoneNumber, task } = req.body;
-  console.log(req.body);
-  console.log(firstName, lastName, email, phoneNumber, task);
 
   const uVolunteer = await Volunteer.findOne({ email: email });
 

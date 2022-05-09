@@ -36,7 +36,7 @@ router.post('/update/:id', async (req, res) => {
       console.log(err);
     } else {
       Product.findByIdAndUpdate(productId, product).exec();
-      console.log('Product successfully updated, check your db');
+      // console.log('Product successfully updated, check your db');
       res.redirect('/products');
     }
   });
@@ -49,7 +49,7 @@ router.get('/delete/:id', async (req, res) => {
 
 router.post('/delete/:id', async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
-  console.log('Product deleted, check your db');
+  // console.log('Product deleted, check your db');
   res.redirect('/products');
 });
 
