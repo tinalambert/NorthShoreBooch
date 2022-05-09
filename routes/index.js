@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
     decoded = jwt.verify(token, secret, { complete: true });
     isAdmin = decoded.payload.isAdmin;
   }
-  console.log(token);
+  // console.log(token);
 
   res.render('index', { title: 'Home', loggedIn, isAdmin });
 });

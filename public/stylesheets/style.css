@@ -225,3 +225,8 @@ input::web-kit-outer-spin-button
   opacity: 82%;
   margin-top: 2%;
 }
+
+#staffImg {
+  height: 50px;
+  width: 50px;
+}

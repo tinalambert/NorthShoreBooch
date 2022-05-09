@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const { Schema } = require("mongoose");
-const passportLocalmongoose = require("passport-local-mongoose");
-const Product = require("../models/Product");
+const mongoose = require('mongoose');
+const { Schema } = require('mongoose');
+const passportLocalmongoose = require('passport-local-mongoose');
+const Product = require('../models/Product');
 
 const userSchema = Schema({
   firstName: String,
@@ -24,6 +24,7 @@ const userSchema = Schema({
     ],
   },
   isAdmin: { type: Boolean, default: false },
+  isVolunteer: { type: Boolean, default: false },
   avatar: String,
   phoneNumber: String,
   streetAddress: String,
@@ -38,14 +39,14 @@ userSchema.methods.addToCart = async function (product) {
   let count = 0;
 
   const cartProductIndex = this.cart.items.findIndex((cart) => {
-    console.log("cart product is ", cart);
+    console.log('cart product is ', cart);
     return cart.productId.toString() === product._id.toString();
   });
   let newQuantity = 1;
   const cartItems = [...this.cart.items];
 
   if (cartProductIndex >= 0) {
-    console.log("This product already exists");
+    console.log('This product already exists');
     newQuantity = this.cart.items[cartProductIndex].quantity + 1;
     cartItems[cartProductIndex].quantity = newQuantity;
   } else {
@@ -58,10 +59,10 @@ userSchema.methods.addToCart = async function (product) {
     count++;
   });
 
-  console.log("count is ", count);
+  console.log('count is ', count);
 
   this.cart = updatedCart;
   return this.save();
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);
