@@ -5,6 +5,25 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
 router.get('/', async (req, res) => {
+  let token = req.cookies.loggedIn;
+  let secret = process.env.JWT_SECRET;
+  let decoded;
+  let isAdmin;
+  let products = [];
+  products = await Product.find();
+  let loggedIn = false;
+  if (token) {
+    loggedIn = true;
+    decoded = jwt.verify(token, secret, { complete: true });
+    isAdmin = decoded.payload.id;
+    res.render('products', { title: 'Products', products, loggedIn, isAdmin });
+  } else {
+    res.render('products', {title: 'Products', products, loggedIn, isAdmin})
+  }
+  //console.log(products)
+});
+
+router.get('/update/:id', async (req, res) => {
   let token;
   let decoded;
   let isAdmin;
@@ -15,16 +34,9 @@ router.get('/', async (req, res) => {
     decoded = jwt.verify(token, secret, { complete: true });
     isAdmin = decoded.payload.isAdmin;
   }
-  let products = [];
-  products = await Product.find();
-  //console.log(products)
-  res.render('products', { title: 'Products', products, loggedIn, isAdmin });
-});
-
-router.get('/update/:id', async (req, res) => {
   // console.log(req.params)
   const product = await Product.findById(req.params.id);
-  res.render('updateProduct', { title: 'Update Product', product });
+  res.render('updateProduct', { title: 'Update Product', product, loggedIn, isAdmin });
 });
 
 router.post('/update/:id', async (req, res) => {
@@ -35,17 +47,16 @@ router.post('/update/:id', async (req, res) => {
     if (err) {
       const error = product.validateSync().errors;
       if (error.productName) {
-        return res.redirect("/update/:id", {product, message: error.productName.message})
+        return res.render("updateProduct", {product, message: error.productName.message})
       } if (error.desciption) {
         return res.render("updateProduct", {product, message: error.desciption.message})
       } if (error.productPrice) {
         return res.render("updateProduct", {product, message: error.productPrice.message})
       } if (error.imageUrl) {
-        return res.render("updateProduct", {product, message: error.imageUrl.message})
+        return res.redirect("updateProduct", {product, message: error.imageUrl.message})
       }
-
     } else {
-      Product.findByIdAndUpdate(productId, product).exec();
+      Product.findByIdAndUpdate(productId, req.body).exec();
       console.log('Product successfully updated, check your db');
       res.redirect('/products');
     }

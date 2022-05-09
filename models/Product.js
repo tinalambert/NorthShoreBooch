@@ -21,10 +21,9 @@ const productSchema = Schema({
      },
     productPrice: {
         type: String,
-        required: [true, "Price is required"],
         validate: {
             validator: (productPrice) => {
-                const regex = /^\$[0-9]+(\.[0-9][0-9])?$/
+                const regex = /^ *\$\d+(?:\.\d{2}) *$/g
                 const match = regex.test(productPrice)
                 return match
             },

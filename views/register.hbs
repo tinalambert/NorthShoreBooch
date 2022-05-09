@@ -1,7 +1,7 @@
 
 <body>
 
-  <div class="container registerBody" id="registerBody">
+  <div class="container-fluid" id="registerBody">
     <div class="row updateForm">
 
       <div class="col-md-6 offset-md-3">
@@ -11,14 +11,13 @@
             method="POST"
             class="mt-4 border p-3 bg-light shadow"
           >
-      <br>
-      <br>
-            <h3 class="mb-5 text-secondary">Create an account</h3>
             {{#if message}}
-            <div>
-              <p style="color: red">{{message}}</p>
+            <div id="error-message">
+              <p>{{message}}</p>
                 </div>
           {{/if}}
+      <br>
+            <h3 class="mb-5 text-secondary">Create an account</h3>
           <br>
             <div class="row">
               <div class="mb-3 col-md-12">
@@ -85,6 +84,8 @@
                 <button class="btn btn-success grow" type="submit">Register!</button>
               </div>
             </div>
+            <br>
+          <p class="p-3">Already have an account? Login <a href="/users/login">here</a></p>
           </form>
         </div>
       </div>

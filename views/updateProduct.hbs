@@ -4,17 +4,17 @@
     <div class="row updateForm">
 
       <div class="col-md-6 offset-md-3">
-        {{#if message}} 
-            <div id="error-message">
-              <p style="align-items: center">{{message}}</p>
-              </div>
-            {{/if}}
         <div class="form">
           <form
             action="/products/update/{{product.id}}"
             method="POST"
             class="mt-4 border p-3 bg-light shadow"
           >
+        {{#if message}} 
+            <div id="error-message">
+              <p>{{message}}</p>
+              </div>
+            {{/if}}
             <h3 class="mb-5 text-secondary">Update product</h3>
             <div class="row">
               <div class="mb-3 col-md-12">
@@ -38,7 +38,7 @@
                 >{{product.description}}</textarea>
               </div>
               <div class="mb-3 col-md-12">
-                <label>Price*</label>
+                <label for="productPrice">Price*</label>
                 <input
                   type="text"
                   name="productPrice"
@@ -48,11 +48,11 @@
                 />
               </div>
               <div class="mb-3 col-md-6">
-                <label for="formFile" class="form-label">Image Url*</label>
+                <label for="imageUrl" class="form-label">Image Url*</label>
                 <input
                   type="text"
-                  name="image"
-                  id="formFile"
+                  name="imageUrl"
+                  id="imageUrl"
                   value="{{product.imageUrl}}"
                   required
                 />

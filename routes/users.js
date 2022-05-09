@@ -16,33 +16,53 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-  const { firstName, lastName, username, email, password, repeatPassword } =
-    req.body;
+  const { firstName, lastName, username, email, password, repeatPassword } = req.body;
 
   const uName = await User.findOne({ username: username });
 
   if (uName) {
     return res.render('register', {
-      message: '*Username has already been used!*',
+      message: 'Username is taken!',
     });
   }
-  if (password != repeatPassword) {
-    return res.render('register', { message: '*Passwords do not match*' });
-  } else {
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hash = bcrypt.hashSync(password, salt);
+  let newUser = new User (req.body)
+  // } else {
+    // const salt = bcrypt.genSaltSync(saltRounds);
+    // const hash = bcrypt.hashSync(password, salt);
 
-    const newUser = new User({
-      firstName: firstName,
-      lastName: lastName,
-      username: username,
-      email: email,
-      password: hash,
+    // const newUser = new User({
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   username: username,
+    //   email: email,
+    //   password: hash,
+    // });
+
+    await newUser.save((err) => {
+      if (err) {
+        const error = newUser.validateSync().errors;
+        if (error.email) {
+          return res.render("register", {message: error.email.message})
+        } if (error.password) {
+          return res.render("register", {message: error.password.message})
+        } else if (password != repeatPassword) {
+          return res.render('register', { message: 'Passwords must match' });
+        }
+      } else {
+        const salt = bcrypt.genSaltSync(saltRounds);
+        const hash = bcrypt.hashSync(password, salt);
+
+        newUser = new User({
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
+        email: email,
+        password: hash,
     });
-
-    await newUser.save();
-    res.render('login', {message: "Registration successful! Login below"});
-  }
+        res.render('login', {message: "Registration successful! Login below"});
+      }
+    });
+  // }
 });
 
 router.get('/login', (req, res) => {
