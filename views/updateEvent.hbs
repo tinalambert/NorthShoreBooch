@@ -1,0 +1,54 @@
+<div class="container" id="addBox">
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="form">
+            <form
+              action="/events/update/{{event.id}}"
+              method="POST"
+              class="mt-4 border p-3 bg-light shadow"
+            >
+              <h3 class="mb-5 text-secondary">Update event</h3>
+              <div class="row">
+                <div class="mb-3 col-md-12">
+                  <label>Event Name*</label>
+                  <input
+                    type="text"
+                    id="event"
+                    name="event"
+                    value="{{event.event}}"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Event Date*</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    value="{{event.date}}"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label>Description*</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    value="{{event.description}}"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <input type="text" name="imageUrl" id="imageUrl" value="{{event.imageUrl}}"/>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-success float-end" type="submit">Add to Calendar</button>
+                </div>
+              </div>
+            </form>
