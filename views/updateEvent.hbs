@@ -47,9 +47,15 @@
                 <div class="mb-3 col-md-6">
                   <label for="imageUrl" class="form-label">Attach Image</label>
                   <input type="text" name="imageUrl" id="imageUrl" value="{{event.imageUrl}}"/>
+                  <img
+                  src={{event.imageUrl}}
+                  alt="{{event.event}}"
+                  class="img-thumbnail"
+                />
                 </div>
                 <div class="col-md-12">
                   <button class="btn btn-success float-end" type="submit">Add to Calendar</button>
                 </div>
+                <a href="/events">Click to return to Events page</a>
               </div>
             </form>
