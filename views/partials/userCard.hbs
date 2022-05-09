@@ -1,0 +1,43 @@
+
+
+<div id="userCard" class="col-12 col-md-6 col-lg-4">
+    <div class="card">
+        <img
+        id="staffImg"
+        src={{user.avatar}}
+        class="card-img-top"
+
+        />
+        <div class="container card-body">
+            <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+            <p class="card-text">{{user.email}}</p>
+            <p class="card-text">{{user.userName}}</p>
+        </div>
+        <div id="userCardForm" class="container">
+            <form action="/admin/update/{{user._id}}" method="POST">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Position</legend>
+                        <div >
+                            <div class="form-check">
+                                <input class="form-check-input" type="text" name="isAdmin" id="isAdmin" value="{{user.isAdmin}}" >
+                                <label class="form-check-label" for="isAdmin">
+                                Staff
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="text" name="isVolunteer" id="isVolunteer" value="{{user.isVolunteer}}">
+                                <label class="form-check-label" for="isVolunteer">
+                                Volunteer
+                                </label>
+                            </div>
+                            <div>
+                                <input id="userCardUpdateBtn" class="btn btn-warning" type="submit" value="Update" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

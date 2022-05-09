@@ -5,21 +5,22 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
 router.get('/', async (req, res) => {
-  let token = req.cookies.loggedIn;
-  let secret = process.env.JWT_SECRET;
+  let token;
   let decoded;
   let isAdmin;
-  let products = [];
-  products = await Product.find();
   let loggedIn = false;
-  if (token) {
+  if (req.cookies.loggedIn) {
     loggedIn = true;
-    decoded = jwt.verify(token, secret, { complete: true });
-    isAdmin = decoded.payload.id;
-    res.render('products', { title: 'Products', products, loggedIn, isAdmin });
-  } else {
-    res.render('products', {title: 'Products', products, loggedIn, isAdmin})
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
   }
+  const products = await Product.find()
+    products.forEach((product) => {
+      // console.log(8888, product.isAdmin)
+      product.isAdmin = isAdmin
+    })
+    res.render('products', { title: 'Products', products, loggedIn, isAdmin });
   //console.log(products)
 });
 
@@ -70,7 +71,7 @@ router.get('/delete/:id', async (req, res) => {
 
 router.post('/delete/:id', async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
-  console.log('Product deleted, check your db');
+  // console.log('Product deleted, check your db');
   res.redirect('/products');
 });
 

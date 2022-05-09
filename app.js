@@ -21,6 +21,7 @@ const checkoutRouter = require('./routes/checkout');
 const searchRouter = require('./routes/search');
 const holisticRouter = require('./routes/holistic');
 const plantsRouter = require('./routes/plants');
+const adminRouter = require('./routes/admin');
 
 // const flash = require('express-flash');
 
@@ -39,6 +40,7 @@ mongoose
 
 // view engine setup
 hbs.registerPartials(__dirname + '/views/partials');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -80,6 +82,7 @@ app.use('/checkout', checkoutRouter);
 app.use('/search', searchRouter);
 app.use('/holistic', holisticRouter); 
 app.use('/plants', plantsRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

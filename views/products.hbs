@@ -14,40 +14,11 @@
 
    <div class="container">
       <div class="row g-3">
-            {{#each products}}
 
-         <div class="col-12 col-md-6 col-lg-4">
-            <div class="card h-100">
-            <img
-               src={{this.imageUrl}}
-               alt="{{product.productName}}"
-               class="card-img-top img-thumbnail"
-            />
-               <div class="card-body">
-                  <h5 class="card-title">{{this.productName}}</h5>
-                  <p class="card-text">{{this.description}}</p>
-                  <p class="card-text">{{this.productPrice}}</p>
-               <form action="/cart/{{this._id}}" method="POST">
-                  <button class="btn btn-success" name="{{this.productName}}" value="{{this._id}}" type="submit">Add to cart</button>
-               </form>
-               {{#if loggedIn}}
-               {{!-- {{#if isAdmin}} --}}
-               <a class="btn btn-success" type="submit" href="/products/update/{{this._id}}">Update</a>
-               <a class="btn btn-success" type="submit" href="/products/delete/{{this._id}}">Delete</a>
-               {{!-- {{/if}} --}}
-               {{/if}}
-               </div>
-               </div>
-               </div>
-               {{/each}}
+            {{#each products}}
+            {{> tempProduct product=this}}
+            {{/each}}
          </div>
       </div>
-
-            
    </div>
 </body>
-
-
-      
-   
-   

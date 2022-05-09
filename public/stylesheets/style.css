@@ -226,6 +226,10 @@ input::web-kit-outer-spin-button
   margin-top: 2%;
 }
 
+#staffImg {
+  height: 50px;
+  width: 50px;
+}
 #dltProduct {
   opacity: 100%;
 }
@@ -248,5 +252,4 @@ input::web-kit-outer-spin-button
   background-color: rgb(244, 89, 71);
   color: white;
   
-
 }

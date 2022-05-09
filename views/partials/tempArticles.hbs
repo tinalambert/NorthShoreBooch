@@ -1,5 +1,4 @@
 <div class="col-12 col-md-6 col-lg-4">
-
 <div class="card">    
   <img
     src="{{article.imageUrl}}"
@@ -13,10 +12,8 @@
     <p>Full article:</p>
     <a href="{{article.link}}">{{article.link}}</a>
     <br>
-
-    {{#if isAdmin}}
+    {{#if article.isAdmin}}
     <a class="btn btn-success" type="submit" href="/holistic/delete/{{article._id}}">Delete</a>
-    <br>
     <a class="btn btn-success" type="submit" href="/holistic/update/{{article._id}}">Update</a>
     {{/if}}
 </div>
