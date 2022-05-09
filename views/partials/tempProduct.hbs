@@ -1,7 +1,7 @@
 
 <div class="col-12 col-md-6 col-lg-4">
 
-<div class="card">
+<div class="card h-100">
   <img
     src={{product.imageUrl}}
     alt="{{product.productName}}"
@@ -11,11 +11,9 @@
     <h5 class="card-title">{{product.productName}}</h5>
     <p class="card-text">{{product.description}}</p>
     <p class="card-text">{{product.productPrice}}</p>
-
   <form action="/cart/{{product._id}}" method="POST">
     <button class="btn btn-success" name="{{product.productName}}" value="{{product._id}}" type="submit">Add to cart</button>
   </form>
-
   <a class="btn btn-success" type="submit" href="/products/update/{{product._id}}">Update</a>
   <a class="btn btn-success" type="submit" href="/products/delete/{{product._id}}">Delete</a>
   </div>

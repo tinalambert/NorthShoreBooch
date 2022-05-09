@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -68,11 +69,14 @@
               <a class="nav-link" href="/hollistic">Hollistic</a>
             </li>
             </li>
-              {{#if loggedIn}}
+              
+              {{#if isAdmin}}
             <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add a product</a>
             </li>
+            {{/if}}
+            {{#if loggedIn}}
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>

@@ -64,11 +64,11 @@ input:valid {
   background-size: cover;
   
   text-align: center;
-  color: white;
+  color: black;
 }
-#registerForm {
+/* #registerForm {
   display: inline-block;
-}
+} */
 
 .grow {
   transition: all .2s ease-in-out;
@@ -77,8 +77,8 @@ input:valid {
   transform: scale(1.1);
 }
 
-div#addProduct {
-  background-image: src="https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+#addProduct {
+  background-image: url("https://images.pexels.com/photos/1675211/pexels-photo-1675211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
 }
 
 .volunteerBody {
@@ -242,4 +242,10 @@ input::web-kit-outer-spin-button
 .updateForm {
   opacity: 82%;
   margin-top: 2%;
+}
+
+#error-message {
+  background-color: rgb(244, 89, 71);
+  color: white;
+  padding: 20px;
 }

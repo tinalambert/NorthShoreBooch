@@ -31,9 +31,19 @@ router.post('/update/:id', async (req, res) => {
   let productId = req.params.id;
   let product = await Product.findById(productId, req.body);
 
-  await product.save((err) => {
+  product.save((err) => {
     if (err) {
-      console.log(err);
+      const error = product.validateSync().errors;
+      if (error.productName) {
+        return res.redirect("/update/:id", {product, message: error.productName.message})
+      } if (error.desciption) {
+        return res.render("updateProduct", {product, message: error.desciption.message})
+      } if (error.productPrice) {
+        return res.render("updateProduct", {product, message: error.productPrice.message})
+      } if (error.imageUrl) {
+        return res.render("updateProduct", {product, message: error.imageUrl.message})
+      }
+
     } else {
       Product.findByIdAndUpdate(productId, product).exec();
       console.log('Product successfully updated, check your db');

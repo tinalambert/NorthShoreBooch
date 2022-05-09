@@ -4,6 +4,11 @@
     <div class="row updateForm">
 
       <div class="col-md-6 offset-md-3">
+        {{#if message}} 
+            <div id="error-message">
+              <p style="align-items: center">{{message}}</p>
+              </div>
+            {{/if}}
         <div class="form">
           <form
             action="/products/update/{{product.id}}"

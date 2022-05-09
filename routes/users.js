@@ -23,11 +23,11 @@ router.post('/register', async (req, res) => {
 
   if (uName) {
     return res.render('register', {
-      message: 'Username has already been used!',
+      message: '*Username has already been used!*',
     });
   }
   if (password != repeatPassword) {
-    return res.render('register', { message: 'Passwords do not match' });
+    return res.render('register', { message: '*Passwords do not match*' });
   } else {
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password, salt);
@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
     });
 
     await newUser.save();
-    res.redirect('/users/login');
+    res.render('login', {message: "Registration successful! Login below"});
   }
 });
 
