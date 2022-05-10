@@ -8,14 +8,16 @@
       <div 
         class="singleCol container text-center">
         <h1>Discover the origins of the ingredients that make our kombucha SUPER food!</h1>
-        <h2>It all begins with our bountiful Aina.</h2>        
+        <p>It all begins with our bountiful Aina.</p>        
       </div>
     </div>
   </div>
 
   <div 
-    class="container-fluid float-end">
+    class="container-fluid">
+    <br>
     <form 
+      class="searchSubmit"
       action="/search" 
       method="GET">
       <input
@@ -133,11 +135,12 @@
           </div>
           <div class="mb-3 col-md-12">
             <label>Added By</label>
-              <input
-                type="text"
+              <select
                 id="AddedBy"
                 name="AddedBy"
-                class="form-control"/>
+                class="form-control">
+                <option value="Guilherme Santos">Guilherme Santos</option>
+              </select>
           </div>
           <div class="col-md-12">
             <button 
@@ -151,7 +154,12 @@
     </div>
   </div>
 {{/if}}
-<h2>Plants Cultivated in the North Shore Booch Community Garden</h2>
+<br>
+<br>
+<div>
+<h4 style="text-align:center">Plants Cultivated in Our Community Garden</h4>
+</div>
+<br>
 <div class="container">
   <div class="row g-3">
     {{#each plants}}

@@ -270,3 +270,13 @@ ul {
 #addArticlebutton {
   background-color: green;
 }
+
+form.searchSubmit {
+  display: inline-block;
+  float: right;
+}
+
+img.card-img-top {
+  width: 420px;
+  height: 420px;
+}
