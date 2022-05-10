@@ -378,7 +378,12 @@ const plantSchema = Schema({
   },
   imageUrl: {
     type: String,
+  },
+  addedBy: {
+    type: String,
+    require: [true, "Please add a Contributer Name"],
   }
+
 });
 
 module.exports = mongoose.model('Plant', plantSchema);

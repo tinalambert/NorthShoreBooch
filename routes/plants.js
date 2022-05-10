@@ -19,8 +19,7 @@ router.get('/', async (req, res) => {
 
   let plants = [];
   
-  plants = await Plant.find({ CommonName: ["Lavender", "Hemp", "Lemongrass", "Kalo (Taro)", "Noni", "Banana", "Papaya", "Peppermint", "lilikoi (Passion Fruit) ", "Tulsi (Holy Basil)", "Moringa", "Olena (Hawaiian Turmeric)", "Kaukani (Hawaiian ginger)" ] })
-  //console.log(plants)
+  plants = await Plant.find({ addedBy: "Guilherme Santos" })
   plants.forEach((plant) => {
     plant.isAdmin = isAdmin;
   })
