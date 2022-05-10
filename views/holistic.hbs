@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Hollistic Living</title>
-</head>
+
 <body id="hollisticBody">
 
       <div class="masthead"
@@ -19,10 +12,10 @@
    </div>
    <br>
            <div class="col-md-6 offset-md-3">
-          {{#if isAdmin}}  
           <div class="form">
+          {{#if isAdmin}}  
             <form
-              action="/hollistic"
+              action="/holistic"
               method="POST"
               class="mt-4 border p-3 bg-light shadow"
             >
@@ -74,7 +67,7 @@
                   <input type="imageUrl" name="imageUrl" id="imageUrl"/>
                 </div>
                 <div class="col-md-12">
-                  <button class="btn btn-success float-end" type="submit">Add to Library</button>
+                  <input id="addArticlebutton" class="btn btn-success float-end" type="submit"></input>
                 </div>
               </div>
             </form>
@@ -90,5 +83,3 @@
          </div>
       </div>
    </div>
-</body>
-</html>

@@ -28,8 +28,9 @@ router.get('/', async (req, res) => {
 }); 
 
 router.post('/', async (req,res) => {
+  console.log(11111111111, req.body)
     const { title, author, description, link, imageUrl } = req.body;
-
+  
     const newArticle = new Article({
         title: title,
         author: author,
