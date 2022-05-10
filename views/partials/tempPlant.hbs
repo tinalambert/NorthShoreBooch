@@ -1,22 +1,49 @@
-<div class="col-12 col-md-6 col-lg-4" id="plantCard">
+<div class="col-sm-12 col-md-6 col-lg-4" id="plantCard">
     <div class="card">
-        <img src={{plant.imageUrl}} class="card-img-top"/>
-    <div class="card-body">
-        <h5 class="card-title"><strong>{{plant.CommonName}}</strong></h5>
-        <h6 class="sci-title">{{plant.ScientificName}}</h6>
-        <ul>
-            <li class="card-text"><strong>Bloom Period:</strong> {{plant.BloomPeriod}}</li>
-            <li class="card-text"><strong>Life Cycle:</strong> {{plant.Duration}}</li>
-            <li class="card-text"><strong>Shade Tolerance:</strong> {{plant.ShadeTolerance}}</li>
-            {{!-- <li class="card-text">Percipitation Range: {{plant.Precipitation_Minimum}} - {{plant.Precipitation_Maximum}}</li> --}}
-            {{!-- <li class="card-text">Growth Rate: {{plant.GrowthRate}}</li> --}}
-            {{!-- <li class="card-text">Grows In: {{plant.State}}</li> --}}
-            {{!-- <li class="card-text">Reccommended Root Depth: {{plant.RootDepthMinimum}}</li> --}}
-        </ul>
-    {{#if plant.isAdmin}}
-        <button class="btn btn-outline-success" href="update/{{plants.CommonName}}">Update a Plant</a>
-        <button type="button" class="btn btn-outline-danger" href="delete/{{plants.CommonName}}">Delete a Plant</button>
-    {{/if}}
-    </div>
+        <img 
+        src="{{plant.imageUrl}}" 
+        alt="{{plant.CommonName}}"
+        class="card-img-top"
+        />
+        <div class="card-body">
+            <h5 class="card-title">
+                <strong>{{plant.CommonName}}</strong>
+            </h5>
+            <h6 class="sci-title">{{plant.ScientificName}}</h6>
+            <ul>
+                <li class="card-text">
+                    <strong>Bloom Period:</strong> 
+                    {{plant.BloomPeriod}}
+                    </li>
+                <li class="card-text">
+                    <strong>Life Cycle:</strong> 
+                    {{plant.Duration}}
+                    </li>
+                <li class="card-text">
+                    <strong>Shade Tolerance:</strong> 
+                    {{plant.ShadeTolerance}}
+                    </li>
+                {{!-- <li class="card-text">Percipitation Range: {{plant.Precipitation_Minimum}} - {{plant.Precipitation_Maximum}}</li> --}}
+                {{!-- <li class="card-text">Growth Rate: {{plant.GrowthRate}}</li> --}}
+                {{!-- <li class="card-text">Grows In: {{plant.State}}</li> --}}
+                {{!-- <li class="card-text">Reccommended Root Depth: {{plant.RootDepthMinimum}}</li> --}}
+            </ul>
+
+            {{#if plant.isAdmin}}
+            <button 
+                type="button"
+                class="btn btn-outline-success" 
+                href="update/{{plants.CommonName}}"
+                >Update a Plant
+                </button>
+            <button 
+                type="button" 
+                class="btn btn-outline-danger" 
+                href="delete/{{plants.CommonName}}"
+                >Delete a Plant
+                </button>
+            {{/if}}
+            
+        </div>
     </div>
 </div>
