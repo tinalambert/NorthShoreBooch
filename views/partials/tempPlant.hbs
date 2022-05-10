@@ -1,6 +1,7 @@
 <div class="col-12 col-md-6 col-lg-4" id="plantCard">
     <div class="card">
         <img src={{plant.imageUrl}} class="card-img-top"/>
+        
     <div class="card-body">
         <h5 class="card-title"><strong>{{plant.CommonName}}</strong></h5>
         <h6 class="sci-title">{{plant.ScientificName}}</h6>
@@ -14,7 +15,7 @@
             {{!-- <li class="card-text">Reccommended Root Depth: {{plant.RootDepthMinimum}}</li> --}}
         </ul>
     {{#if plant.isAdmin}}
-        <button class="btn btn-outline-success" href="update/{{plants.CommonName}}">Update a Plant</a>
+        <button class="btn btn-outline-success" href="update/{{plants.CommonName}}">Update a Plant</button>
         <button type="button" class="btn btn-outline-danger" href="delete/{{plants.CommonName}}">Delete a Plant</button>
     {{/if}}
     </div>
