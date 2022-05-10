@@ -254,11 +254,7 @@ ul {
 }
 
 #plantBody {
-  background-color: #DFEACD;
-}
-
-#plantCard {
-  display: flex;
+  background-color: #F6FFE0;
 }
 
 #error-message {
