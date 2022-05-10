@@ -25,6 +25,7 @@ router.get('/', async function (req, res) {
 });
 
 router.post('/', async (req, res) => {
+  
   const { event, date, description, imageUrl } = req.body;
 
   const newEvent = new Event({
@@ -53,12 +54,23 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/update/:id', async (req, res) => {
+  let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
+  }
   const event = await Event.findById(req.params.id)
 
-  res.render('updateEvent', {title: "Update event", event})
+  res.render('updateEvent', {title: "Update event", event, loggedIn, isAdmin})
 })
 
 router.post('/update/:id', async(req, res) => {
+  
   const eventId = req.params.id;
   const event = await Event.findById(eventId, req.body).exec()
 
@@ -73,16 +85,42 @@ router.post('/update/:id', async(req, res) => {
 })
 
 router.get('/delete/:id', async(req,res) => {
+  let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
+  }
   const event = await Event.findById(req.params.id);
 
-  res.render('deleteEvent', {title:"Delete Event", event})
+  res.render('deleteEvent', {title:"Delete Event", event, loggedIn, isAdmin})
 })
 
 router.post('/delete/:id', async(req, res) => {
+  
   const eventId = req.params.id;
   const event = await Event.findByIdAndDelete(eventId);
 
   res.redirect('/events')
+})
+
+// GET ADD PLANT ROUTE //
+router.get("/add", (req, res) => {
+  let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
+  }
+  res.render("addEvent", {loggedIn, isAdmin})
 })
 
 module.exports = router; 

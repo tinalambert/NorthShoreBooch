@@ -1,14 +1,29 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 const Product = require('../models/Product');
 const passport = require('passport');
+const jwt = require("jsonwebtoken")
+const secret = process.env.JWT_SECRET;
 
 router.get(
   '/',
-  passport.authenticate('jwt', { session: false }),
+  // DO WE NEED THIS? //
+
+  // passport.authenticate('jwt', { session: false }),
+  // (req, res) => {
+  //   loggedIn = true;
   (req, res) => {
+    let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
     loggedIn = true;
-    res.render('addProduct', { title: 'Add Product', loggedIn });
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
+  }
+    res.render('addProduct', { title: 'Add Product', loggedIn, isAdmin });
   }
 );
 
