@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="/stylesheets/style.css"/>
 
-   <title>North Shore Booch</title>
-</head>
-<body class="eventBody">
+<body id="holisticBody">
+
       <div class="masthead"
         style="background-image: url('https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');" >
         <div class="color-overlay d-flex justify-content-center align-items-center">
             <div class="singleCol container text-center">
-        <h1>Visit our family-owned Kombucha farm in North Shore Hawaii</h1>
+               <h1>Visit our family-owned Kombucha farm in North Shore Hawaii</h1>
                <p>Find out how to get involved.</p>        
          </div>
       </div>
-{{#if isAdmin}}
-<div class="container" id="addBox">
-      <div class="row">
-
-        <div class="col-md-6 offset-md-3">
+   </div>
+   <br>
+           <div class="col-md-6 offset-md-3">
+          {{#if isAdmin}}  
           <div class="form">
             <form
               action="/events"
@@ -31,7 +22,7 @@
               <h3 class="mb-5 text-secondary">Add event</h3>
               <div class="row">
                 <div class="mb-3 col-md-12">
-                  <label>Event Name*</label>
+                  <label>Event Title*</label>
                   <input
                     type="text"
                     id="event"
@@ -54,6 +45,7 @@
                   <label>Description*</label>
                   <textarea
                     type="text"
+                    id="description"
                     name="description"
                     class="form-control"
                     rows="3"
@@ -65,28 +57,19 @@
                   <input type="imageUrl" name="imageUrl" id="imageUrl"/>
                 </div>
                 <div class="col-md-12">
-                  <button class="btn btn-success float-end" type="submit">Add to Calendar</button>
+                  <button class="btn btn-success float-end" type="submit">Add event</button>
                 </div>
               </div>
             </form>
             {{/if}}
           </div>
         </div>
+   <br> 
+   <div class="container">
+      <div class="row g-3">
+            {{#each events}}
+            {{> tempEvents event=this}}
+            {{/each}}
+         </div>
       </div>
-    </div>
-
-          <div class="container">
-            <div class="row g-3">
-              {{#each events}}
-                {{> tempEvents event=this}}
-              {{/each}}
-          </div>
-            </div> 
-
-    {{#if message}}
-    <div>
-      {{message}}
-    </div>
-    {{/if}}
-</body>
-</html>
+   </div>
