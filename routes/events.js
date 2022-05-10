@@ -26,8 +26,6 @@ router.get('/', async function (req, res) {
 
 router.post('/', async (req, res) => {
   const { event, date, description, imageUrl } = req.body;
-  // console.log(req.body);
-  // console.log(event, date, description, imageUrl);
 
   const newEvent = new Event({
     event: event,
@@ -49,17 +47,13 @@ router.post('/', async (req, res) => {
         res.render('events', { message: error.description.message });
       }
     } else {
-      console.log('New event saved!');
       res.redirect('events');
     }
   });
 });
 
 router.get('/update/:id', async (req, res) => {
-  console.log("firing");
-  // console.log(2222222, res.body)
   const event = await Event.findById(req.params.id)
-  console.log(1111111, event)
 
   res.render('updateEvent', {title: "Update event", event})
 })
@@ -73,7 +67,6 @@ router.post('/update/:id', async(req, res) => {
       console.log(err)
     } else {
       Event.findByIdAndUpdate(eventId, event).exec()
-      console.log("Event successfully updated, check your DB!")
       res.redirect('/events'); 
     }
   })

@@ -22,13 +22,13 @@ router.get('/', async (req, res) => {
     articles.forEach((article) => {
       article.isAdmin = isAdmin;
     })
-    //console.log(articles)
+
 
     res.render('holistic', {articles, loggedIn, isAdmin});  
 }); 
 
 router.post('/', async (req,res) => {
-  console.log(11111111111, req.body)
+
     const { title, author, description, link, imageUrl } = req.body;
   
     const newArticle = new Article({
@@ -73,7 +73,6 @@ router.get('/update/:id', async (req, res) => {
         console.log(err)
       } else {
         Article.findByIdAndUpdate(articleId, article).exec()
-        console.log("Event successfully updated, check your DB!")
         res.redirect('/holistic'); 
       }
     })
