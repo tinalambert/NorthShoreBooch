@@ -9,6 +9,7 @@ router.get(
   async (req, res) => {
     let isAdmin;
     let loggedIn = true;
+    // console.log(9999, isAdmin, loggedIn)
 
     if (req.user.isAdmin === true) {
       let staff = [];
