@@ -69,6 +69,21 @@ router.post('/plant', async (req, res) => {
     await Plant.findByIdAndUpdate(id, info);
     res.redirect('/plants/');
   });
+
+  // GET ADD PLANT PAGE //
+  router.get('/add', (req, res) => {
+    let token;
+  let decoded;
+  let isAdmin;
+  let loggedIn = false;
+  if (req.cookies.loggedIn) {
+    loggedIn = true;
+    token = req.cookies.loggedIn;
+    decoded = jwt.verify(token, secret, {complete: true});
+    isAdmin = decoded.payload.isAdmin;
+  }
+    res.render("addPlant", {loggedIn, isAdmin})
+  })
   
 
 module.exports = router;

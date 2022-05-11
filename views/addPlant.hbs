@@ -1,42 +1,4 @@
-<body class="plantBody">
-  
-  <div 
-    class="masthead"
-    style="background-image: url('https://images.pexels.com/photos/1141792/pexels-photo-1141792.jpeg');" >
-    <div 
-      class="color-overlay d-flex justify-content-center align-items-center">
-      <div 
-        class="singleCol container text-center">
-        <h1>Discover the origins of the ingredients that make our kombucha SUPER food!</h1>
-        <p>It all begins with our bountiful Aina.</p>        
-      </div>
-    </div>
-  </div>
 
-  <div 
-    class="container-fluid">
-    <br>
-    <form 
-      class="searchSubmit"
-      action="/search" 
-      method="GET">
-      <input
-        type="text"
-        placeholder="Search Common Name"
-        class="search mx-auto"
-        name="search"
-        aria-label="search"
-      />
-      <input 
-        id="searchBtn" 
-        class="btn btn-success" 
-        type="submit" 
-        value="Search" 
-      />
-    </form>
-  </div>
-
-{{!-- {{#if isAdmin}}
   <div 
     class="col-md-6 offset-md-3">
     <div class="form">
@@ -150,23 +112,7 @@
             </button>
           </div>
         </div>
+        <p class="p-3">To view your current events, please click <a href="/plants">here</a></p>
       </form>
     </div>
   </div>
-{{/if}} --}}
-<br>
-<br>
-<div>
-<h4 style="text-align:center">Plants Cultivated in Our Community Garden</h4>
-</div>
-<br>
-<div class="container">
-  <div class="row g-3">
-    {{#each plants}}
-      {{> tempPlant plant=this}}
-    {{/each}}
-  </div>
-</div>
-<h2>Other Incredible Plants Cultivated Around the World</h2>
-    
-</body>

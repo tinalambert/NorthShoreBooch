@@ -1,18 +1,4 @@
-
-<body id="holisticBody">
-
-      <div class="masthead"
-        style="background-image: url('https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');" >
-        <div class="color-overlay d-flex justify-content-center align-items-center">
-            <div class="singleCol container text-center">
-               <h1>Visit our family-owned Kombucha farm in North Shore Hawaii</h1>
-               <p>Find out how to get involved.</p>        
-         </div>
-      </div>
-   </div>
-   <br>
-           {{!-- <div class="col-md-6 offset-md-3">
-          {{#if isAdmin}}  
+<div class="col-md-6 offset-md-3">  
           <div class="form">
             <form
               action="/events"
@@ -53,23 +39,14 @@
                   ></textarea>
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="imageUrl" class="form-label">Attach Image</label>
+                  <label for="imageUrl" class="form-label">Image Url</label>
                   <input type="imageUrl" name="imageUrl" id="imageUrl"/>
                 </div>
                 <div class="col-md-12">
                   <button class="btn btn-success float-end" type="submit">Add event</button>
                 </div>
               </div>
+              <p class="p-3">To view your current events, please click <a href="/events">here</a></p>
             </form>
-            {{/if}} --}}
-          {{!-- </div>
-        </div> --}}
-   <br> 
-   <div class="container">
-      <div class="row g-3">
-            {{#each events}}
-            {{> tempEvents event=this}}
-            {{/each}}
-         </div>
-      </div>
-    </div>
+            </div>
+        </div>

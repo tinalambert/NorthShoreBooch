@@ -272,11 +272,11 @@ ul {
 }
 
 form.searchSubmit {
-  display: inline-block;
+  /* display: inline-block; */
   float: right;
 }
 
 img.card-img-top {
   width: 420px;
-  height: 420px;
+  height: 340px;
 }
