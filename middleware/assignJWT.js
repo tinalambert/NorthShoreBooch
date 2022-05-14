@@ -29,7 +29,7 @@ const assignJWT = async (req, res, next) => {
       id: user._id,
     };
 
-    token = jwt.sign(payload, secret, { expiresIn: '1d' });
+    token = jwt.sign(payload, secret);
     res.cookie('loggedIn', token);
   } catch (err) {
     res.status(500).json({ err: err.message });
